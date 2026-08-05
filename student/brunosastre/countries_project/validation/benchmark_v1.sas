@@ -1,7 +1,9 @@
 %include "/home/student/github_bruno/student/brunosastre/countries_project/optimized/parameters.sas";
 
 /* ============================================================
-   COUNTRIES PROJECT BENCHMARK
+  Done with copilot - didn't have time to learn how to parse a log in sas.
+
+COUNTRIES PROJECT BENCHMARK
    Original vs Optimized
 
    Measures:
@@ -325,9 +327,10 @@ title "Execution Times";
 proc print data=work.execution_times noobs;
 run;
 
+/*
 title "Block I/O Lines Extracted from Logs";
 proc print data=work.io_values noobs;
-run;
+run;*/
 
 title "Block I/O Summary";
 proc print data=work.io_results noobs;
@@ -336,28 +339,3 @@ run;
 title "Final Benchmark Results";
 proc print data=work.final_results noobs;
 run;
-
-/* ============================================================
-   Generate HTML report
-   ============================================================ */
-
-ods html
-    path="/home/student/github_bruno/student/brunosastre/countries_project/validation"
-    file="benchmark_results.html"
-    style=htmlblue;
-
-title "Execution Times";
-proc print data=work.execution_times noobs;
-run;
-
-title "Block I/O Summary";
-proc print data=work.io_results noobs;
-run;
-
-title "Final Benchmark Results";
-proc print data=work.final_results noobs;
-run;
-
-ods html close;
-
-title;
