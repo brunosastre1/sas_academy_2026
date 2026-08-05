@@ -1664,29 +1664,30 @@ TD, TH {vertical-align: top }
 <a name="IDX"></a>
 <table class="systitleandfootercontainer" width="100%" cellspacing="1" cellpadding="1" rules="none" frame="void" border="0" summary="Page Layout">
 <tr>
-<td class="c systemtitle">Execution Time Comparison</td>
+<td class="c systemtitle">Execution Times</td>
 </tr>
 </table><br>
 <div>
 <div align="center">
-<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Report: Detailed and/or summarized report">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Print: Data Set WORK.EXECUTION_TIMES">
 <colgroup>
-<col>
 <col>
 <col>
 </colgroup>
 <thead>
 <tr>
-<th class="c header" scope="col">ORIGINAL</th>
-<th class="c header" scope="col">OPTIMIZED</th>
-<th class="c header" scope="col">performance_gain</th>
+<th class="l header" scope="col">scenario</th>
+<th class="r header" scope="col">seconds</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="r data">   3.440</td>
-<td class="r data">   1.069</td>
-<td class="r data">  68.913</td>
+<td class="l data">ORIGINAL</td>
+<td class="r data">3.29393</td>
+</tr>
+<tr>
+<td class="l data">OPTIMIZED</td>
+<td class="r data">1.08300</td>
 </tr>
 </tbody>
 </table>
@@ -1699,30 +1700,100 @@ TD, TH {vertical-align: top }
 <a name="IDX1"></a>
 <table class="systitleandfootercontainer" width="100%" cellspacing="1" cellpadding="1" rules="none" frame="void" border="0" summary="Page Layout">
 <tr>
-<td class="c systemtitle">Individual Execution Times</td>
+<td class="c systemtitle">Block I/O Summary</td>
 </tr>
 </table><br>
 <div>
 <div align="center">
-<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Report: Detailed and/or summarized report">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Print: Data Set WORK.IO_RESULTS">
 <colgroup>
+<col>
+<col>
 <col>
 <col>
 </colgroup>
 <thead>
 <tr>
-<th class="c header" scope="col">scenario</th>
-<th class="c header" scope="col">seconds</th>
+<th class="l header" scope="col">scenario</th>
+<th class="r header" scope="col">block_input_operations</th>
+<th class="r header" scope="col">block_output_operations</th>
+<th class="r header" scope="col">total_block_io</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="l data">ORIGINAL</td>
-<td class="r data">  3.43964</td>
+<td class="l data">OPTIMIZED</td>
+<td class="r data">0</td>
+<td class="r data">6,744</td>
+<td class="r data">6,744</td>
 </tr>
 <tr>
-<td class="l data">OPTIMIZED</td>
-<td class="r data">1.0692699</td>
+<td class="l data">ORIGINAL</td>
+<td class="r data">61,768</td>
+<td class="r data">32,248</td>
+<td class="r data">94,016</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+</div>
+<div class="branch">
+<p style="page-break-after: always;"><br/></p><hr size="3"/>
+<a name="IDX2"></a>
+<table class="systitleandfootercontainer" width="100%" cellspacing="1" cellpadding="1" rules="none" frame="void" border="0" summary="Page Layout">
+<tr>
+<td class="c systemtitle">Final Benchmark Results</td>
+</tr>
+</table><br>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Print: Data Set WORK.FINAL_RESULTS">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">original_seconds</th>
+<th class="r header" scope="col">optimized_seconds</th>
+<th class="r header" scope="col">runtime_seconds_saved</th>
+<th class="r header" scope="col">runtime_savings_pct</th>
+<th class="r header" scope="col">original_block_input</th>
+<th class="r header" scope="col">original_block_output</th>
+<th class="r header" scope="col">original_total_io</th>
+<th class="r header" scope="col">optimized_block_input</th>
+<th class="r header" scope="col">optimized_block_output</th>
+<th class="r header" scope="col">optimized_total_io</th>
+<th class="r header" scope="col">block_io_saved</th>
+<th class="r header" scope="col">io_savings_pct</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="r data">3.294</td>
+<td class="r data">1.083</td>
+<td class="r data">2.211</td>
+<td class="r data">67.12</td>
+<td class="r data">61,768</td>
+<td class="r data">32,248</td>
+<td class="r data">94,016</td>
+<td class="r data">0</td>
+<td class="r data">6,744</td>
+<td class="r data">6,744</td>
+<td class="r data">87,272</td>
+<td class="r data">92.83</td>
 </tr>
 </tbody>
 </table>

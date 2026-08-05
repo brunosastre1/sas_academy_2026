@@ -8,7 +8,8 @@ options sastrace=',,,ds'
         nostsuffix
         sql_ip_trace=(note, source)
         msglevel=i
-        dsaccel=any;
+        dsaccel=any
+        fullstimer;
 
 
 proc sql;

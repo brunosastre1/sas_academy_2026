@@ -1,3 +1,15 @@
+/* ============================================================
+BENCHMARK - PROCESS_COUNTRY_DATA
+Original vs Optimized
+ 
+This program:
+1. Runs the original program
+2. Runs the optimized program
+3. Captures execution time
+4. Reads SAS logs generated with FULLSTIMER
+5. Extracts Block Input and Block Output operations
+6. Calculates Block I/O percent savings
+============================================================ */
 
 %include "/home/student/github_bruno/student/brunosastre/countries_project/optimized/parameters.sas";
 

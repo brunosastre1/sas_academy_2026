@@ -1,7 +1,12 @@
 
-options sastrace=',,,ds' SASTRACELOC=SASLOG NOSTSUFFIX SQL_IP_TRACE=(note, source) msglevel=i dsaccel=any;
-
-
+options sastrace=',,,ds'
+        sastraceloc=saslog
+        nostsuffix
+        sql_ip_trace=(note, source)
+        msglevel=i
+        dsaccel=any
+        fullstimer;
+        
 /**************************************************************
 Process World Bank Indicators 
 
