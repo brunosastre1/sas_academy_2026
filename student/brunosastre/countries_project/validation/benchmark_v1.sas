@@ -16,6 +16,19 @@ COUNTRIES PROJECT BENCHMARK
    Case Study formula:
    ((Original Total Block I/O - Optimized Total Block I/O)
     / Original Total Block I/O) * 100
+
+   IMPORTANT:
+   Both the ORIGINAL and OPTIMIZED programs must contain the marker line
+
+       %put NOTE: ===PIPELINE_END===;
+
+   placed immediately before the validation/comparison section
+   (PROC COMPARE, fetching Oracle tables back to WORK, PROC CONTENTS
+   used only for validation, etc). Everything logged AFTER that
+   marker is excluded from the Block I/O totals below, per the
+   case study instruction: "Do not include the steps for verifying
+   the output of your program in the efficiency improvement
+   calculations."
    ============================================================ */
 
 options fullstimer msglevel=i sastrace=off;
@@ -24,8 +37,8 @@ options fullstimer msglevel=i sastrace=off;
    Log files
    ============================================================ */
 
-%let LOG_ORIGINAL=/home/student/github_bruno/student/brunosastre/countries_project/logs/benchmark_original.log;
-%let LOG_OPTIMIZED=/home/student/github_bruno/student/brunosastre/countries_project/logs/benchmark_optimized.log;
+%let LOG_ORIGINAL=&project_root./logs/benchmark_original.log;
+%let LOG_OPTIMIZED=&project_root./logs/benchmark_optimized.log;
 
 /* ============================================================
    Clean previous benchmark outputs
@@ -116,34 +129,58 @@ quit;
 
 /* ============================================================
    Read Block I/O lines from original log
+
+   Stops counting once the ===PIPELINE_END=== marker is found,
+   so validation/comparison steps (PROC COMPARE, fetching Oracle
+   tables back to WORK for comparison, validation-only PROC
+   CONTENTS, etc.) are excluded from the totals.
    ============================================================ */
 
 data work.block_lines_original;
     length scenario $20 line $32767;
+    retain capture_flag 1;
 
     infile "&LOG_ORIGINAL." truncover;
     input line $char32767.;
 
-    if index(upcase(line), "BLOCK INPUT OPERATIONS")
-    or index(upcase(line), "BLOCK OUTPUT OPERATIONS");
+    /* Once the marker is found stop capturing further lines */
+    if index(line, '===PIPELINE_END===') then capture_flag = 0;
 
-    scenario = "ORIGINAL";
+    if capture_flag then do;
+        if index(upcase(line), "BLOCK INPUT OPERATIONS")
+        or index(upcase(line), "BLOCK OUTPUT OPERATIONS") then do;
+            scenario = "ORIGINAL";
+            output;
+        end;
+    end;
+
+    keep scenario line;
 run;
 
 /* ============================================================
    Read Block I/O lines from optimized log
+
+   Same marker-based cutoff logic as above.
    ============================================================ */
 
 data work.block_lines_optimized;
     length scenario $20 line $32767;
+    retain capture_flag 1;
 
     infile "&LOG_OPTIMIZED." truncover;
     input line $char32767.;
 
-    if index(upcase(line), "BLOCK INPUT OPERATIONS")
-    or index(upcase(line), "BLOCK OUTPUT OPERATIONS");
+    if index(line, '===PIPELINE_END===') then capture_flag = 0;
 
-    scenario = "OPTIMIZED";
+    if capture_flag then do;
+        if index(upcase(line), "BLOCK INPUT OPERATIONS")
+        or index(upcase(line), "BLOCK OUTPUT OPERATIONS") then do;
+            scenario = "OPTIMIZED";
+            output;
+        end;
+    end;
+
+    keep scenario line;
 run;
 
 /* ============================================================
@@ -328,14 +365,16 @@ proc print data=work.execution_times noobs;
 run;
 
 /*
-title "Block I/O Lines Extracted from Logs";
+title "Block I/O Lines Extracted from Logs (validation steps excluded)";
 proc print data=work.io_values noobs;
 run;*/
 
-title "Block I/O Summary";
+title "Block I/O Summary (validation steps excluded)";
 proc print data=work.io_results noobs;
 run;
 
-title "Final Benchmark Results";
+title "Final Benchmark Results (validation steps excluded)";
 proc print data=work.final_results noobs;
 run;
+
+title;

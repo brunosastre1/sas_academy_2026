@@ -229,13 +229,14 @@ proc copy in=work out=oralib memtype=data;
 	select countries_pop_gdp Country_Lookup ;
 run;
 
+
 proc contents data=oralib.countries_pop_gdp;
 run;
 
 proc contents data=oralib.Country_Lookup;
 run;
 
-
+%put NOTE: ===PIPELINE_END===;
 
 /* Resultado do programa original */
 

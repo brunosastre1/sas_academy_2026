@@ -3,6 +3,7 @@
 /* 
    enable tracing to verify what is being pushed to Oracle
  */
+
 options sastrace=',,,ds'
         sastraceloc=saslog
         nostsuffix
@@ -11,14 +12,6 @@ options sastrace=',,,ds'
         dsaccel=any
         fullstimer;
 
-
-proc sql;
-    connect to oracle
-    (
-        path=&path_orcl.
-        authdomain=&auth.
-        &perf_parameters.
-    );
 
 /* 
    Build the GDP column list for Oracle UNPIVOT.
@@ -60,15 +53,22 @@ libname oralib oracle
     DB_LENGTH_SEMANTICS_BYTE=NO
     DBCLIENT_MAX_BYTES=1 &perf_parameters.;
 
+    /* decided not to reorder the countries_pop_gdp table
+proc sql;
 
-/* 
-   Remove final output tables if they already exist.
-*/
-proc datasets lib=oralib nowarn nolist;
-    delete countries_pop_gdp;
-    delete country_lookup;
+     connect to oracle
+    (
+        path=&path_orcl.
+        authdomain=&auth.
+        &perf_parameters.
+    );
+
+    create table old_countries_pop_gdp as 
+    select * from connection to oracle 
+    (select * from countries_pop_gdp
+    order by country_code, short_name, sortable_name, long_name ,alpha_2_code, region ,income_group, wb_2_code, country_name, year, population, pop_growth, gdp, gdp_pct_change, lagged_GDP, world_gdp);
 quit;
-
+*/
 
 /* 
    Main processing using explicit passthrough.
@@ -83,8 +83,26 @@ proc sql;
         &perf_parameters.
     );
 
-
     /* 
+    Remove final output tables if they already exist.
+    942 = table does not exist message
+      */
+    execute (
+        begin
+            execute immediate 'drop table countries_pop_gdp';
+        exception when others then if sqlcode != -942 then raise; end if;
+        end;
+    ) by oracle;
+
+
+    execute (
+        begin
+            execute immediate 'drop table country_lookup';
+        exception when others then if sqlcode != -942 then raise; end if;
+        end;
+    ) by oracle;
+    
+     /* 
        Create COUNTRIES_POP_GDP directly in Oracle.
 
        This replaces several SAS-side steps from the original program:
@@ -261,8 +279,7 @@ proc sql;
                 partition by year
             ) as world_gdp
         from countries_pop_gdp_partial
-
-    ) by oracle;
+        order by country_code, short_name, sortable_name, long_name ,alpha_2_code, region ,income_group, wb_2_code, country_name, year, population, pop_growth, gdp, gdp_pct_change, lagged_GDP, world_gdp) by oracle;
 
 
     /* 
@@ -296,6 +313,11 @@ proc sql;
 
     ) by oracle;
 
+    %put NOTE: ===PIPELINE_END===;
+
+/********************** Validation Step - Does not count in the efficiency improvements calculations */
+
+
 
     /* Validate final row counts directly from Oracle */
     select *
@@ -318,6 +340,8 @@ proc sql;
 quit;
 
 
+
+
 /* 
    Implicit passthrough validation.
    PROC CONTENTS confirms that the final Oracle tables exist and shows metadata. 
@@ -328,14 +352,15 @@ proc contents data=oralib.countries_pop_gdp;
 run;
 
 proc contents data=oralib.country_lookup;
-run;
-*/
+run;*/
+
 
 /* 
    Expected based on the original program:
    - countries_pop_gdp: 3192 rows
    - country_lookup: 214 rows
 */
+
 
 proc sql;
     select count(*) as countries_pop_gdp_rows
@@ -348,33 +373,46 @@ quit;
 
 /* results of the new and optimized program - push from Oracle to SAS */
 
-data work.new_countries_pop_gdp;
+
+data new_countries_pop_gdp;
     set oralib.countries_pop_gdp;
 run;
 
-data work.new_country_lookup;
+/* proc compare already displays table columns and other infos
+proc contents data=new_countries_pop_gdp;
+run;
+
+proc contents data=orig_countries_pop_gdp;
+run;*/
+
+data new_country_lookup;
     set oralib.country_lookup;
 run;
 
 /* results of the original program - push from Oracle to SAS */
 
-proc sort data=work.orig_countries_pop_gdp;
+
+proc sort data=orig_countries_pop_gdp;
     by _all_;
 run;
 
-proc sort data=work.new_countries_pop_gdp;
+/* no need- it's already sorted
+proc sort data=new_countries_pop_gdp;
     by _all_;
-run;
+run;*/
 
 /* had to use criterion due to some floating-point precision differences*/
+/* another alternative to proc compare is to use minus in oracle */
 proc compare
-    base=work.orig_countries_pop_gdp
-    compare=work.new_countries_pop_gdp
+    base=orig_countries_pop_gdp
+    compare=new_countries_pop_gdp
     criterion=1e-12;
 run;
 
-proc compare base=orig_country_lookup compare=new_country_lookup;
-run;
+proc compare 
+    base=orig_country_lookup 
+    compare=new_country_lookup;
+        run;
 
 /*
 
