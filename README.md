@@ -1,150 +1,128 @@
-# SAS Data Engineering Track
+# SAS Data Engineering Case Study
 
-## Project 1 - Countries Data Project
+This repository contains my work for the SAS Data Engineering Case Study, focused on three key areas of SAS Viya data engineering:
 
-This repository contains my solution for the first project of the SAS Data Engineering Case Study: **Countries Data Project**.
+1. Countries Data Project
+2. Natural Disasters Data Project
+3. CAS Research Topic
 
-The objective was to analyze an existing SAS program, execute it successfully in SAS Viya, investigate optimization opportunities, implement an optimized version using Oracle pushdown techniques, validate the results, and benchmark the performance improvements achieved.
-
----
-
-## Project Overview
-
-The original program processes country information and World Bank indicator data to create analytical datasets.
-
-The optimization effort focused on reducing SAS-side processing, increasing Oracle pushdown utilization, simplifying data flows, and maintaining equivalent business results.
-
-The project was executed in four phases:
-
-1. Analysis of the original implementation
-2. Performance and Oracle optimization research
-3. Development of the optimized solution
-4. Validation and benchmarking
+The objective of the case study was to demonstrate practical SAS Viya skills involving Oracle integration, data engineering, CAS processing, performance optimization, ETL development, and technical knowledge sharing. 【1-4fb255】
 
 ---
 
-## Repository Structure
+# Project 1 - Countries Data Project
 
-### exploration/
+The Countries Data Project focused on improving an existing SAS program that processes World Bank indicator data and standardized country information.
 
-Contains the analysis, research, and performance experiments performed during the investigation phase.
+The project objectives were:
 
+- Execute the original SAS program in SAS Viya
+- Reduce processing passes through the data
+- Move processing from SAS Compute to Oracle
+- Use both Explicit and Implicit Pass-Through techniques
+- Validate that optimized results match the original output
+- Measure efficiency improvements using Block I/O operations 【1-4fb255】
 
-#### BrunoSastre_Process_Country_Data_Exploration.sas
-
-Analysis of the original workflow, transformations, joins, and output generation process.
-
-#### BrunoSastre_Process_Country_Data_Explain_Index.sas
-
-Investigation of Oracle execution plans and index utilization to identify optimization opportunities.
-
-#### BrunoSastre_Process_Country_Performance_Exploration_DataType.sas
-
-Performance analysis focused on data types, conversions, and their impact on Oracle pushdown and execution efficiency.
-
-#### BrunoSastre_Process_Country_Performance_Exploration_Index.sas
-
-Performance testing of indexing strategies and their effect on Oracle query execution paths.
-
-#### BrunoSastre_Process_Country_Performance_Exploration_Parallel_Oracle.sas
-
-Exploration of Oracle parallel execution capabilities and potential performance gains.
-
----
-
-### original/
-
-Contains the original case study implementation.
-
-#### Process_Country_Data.sas
-
-Baseline program used to:
-
-- Understand the original process
-- Generate reference results
-- Establish baseline performance metrics
-- Serve as the comparison point for the optimized implementation
-
----
-
-### optimized/
-
-Contains the final optimized solution.
-
-#### Process_Country_Data_Optimized.sas
-
-Main project deliverable.
-
-Optimization techniques applied include:
-
-- Explicit Pass-Through SQL
-- Implicit Pass-Through SQL
-- Oracle-side processing
-- Common Table Expressions (CTEs)
-- Window Functions
-- Reduced intermediate datasets
-- Reduced sorting operations
-- Reduced data movement between Oracle and SAS
-
-#### Load_Countries_to_SAS_population_data.sas
-
-Supporting program used to load and prepare source data required during development and testing.
-
-#### parameters.sas
-
-Centralized configuration file containing reusable project parameters and macro variables.
-
----
-
-### validation/
-
-Contains the benchmarking and validation artifacts.
-
-#### benchmark.sas
-
-Benchmark framework used to compare the original and optimized implementations.
-
----
-
-## Optimization Techniques Demonstrated
-
-The final solution applies several SAS Data Engineering best practices:
+### Key Techniques
 
 - SAS/ACCESS Interface to Oracle
-- Explicit Pass-Through Processing
-- Implicit Pass-Through Processing
-- Oracle Pushdown Optimization
-- SQL Refactoring
+- Explicit Pass-Through SQL
+- Implicit Pass-Through SQL
+- Oracle pushdown optimization
 - Common Table Expressions (CTEs)
 - Oracle Window Functions
-- In-Database Processing
-- Reduced Intermediate Tables
-- Reduced Data Movement
-- Performance Benchmarking
+- PROC COMPARE validation
+- Performance benchmarking using FULLSTIMER
+
+### Outputs
+
+- COUNTRIES_POP_GDP
+- COUNTRY_LOOKUP 【1-4fb255】
 
 ---
 
-## Technologies Used
+# Project 2 - Natural Disasters Data Project
+
+The Natural Disasters project focused on creating an end-to-end ETL pipeline using CAS and SAS Studio Flows.
+
+The project objectives were:
+
+- Load source disaster data into CAS
+- Perform transformations and data quality processing
+- Build a maintainable ETL pipeline
+- Process as much data as possible inside CAS
+- Create reusable flows and reporting tables
+- Support incremental data loads for future years 【1-4fb255】
+
+### Key Techniques
+
+- CAS Data Processing
+- PROC FEDSQL
+- PROC CASUTIL
+- SAS Data Step in CAS
+- SAS Studio Flows
+- Data Quality Processing
+- CASLIB Management
+- ETL Pipeline Development
+
+### Main Output
+
+- NATURAL_DISASTERS reporting table containing earthquake, tsunami, volcano, location, and impact information. 【1-4fb255】
+
+---
+
+# Project 3 - CAS Research Topic
+
+The research project focused on investigating and presenting a CAS-related topic to increase customer knowledge of SAS Viya capabilities.
+
+The work included:
+
+- Researching CAS concepts and best practices
+- Creating technical examples and demonstrations
+- Explaining real-world use cases
+- Preparing knowledge-sharing materials and presentations 【1-4fb255】
+
+Examples of research topics included:
+
+- CAS Data Manipulation Techniques
+- Parquet and Columnar Storage
+- SAS Studio Custom Steps
+- CAS Data Storage Features
+- Data Quality Programming in CAS 【1-4fb255】
+
+---
+
+# Technologies Used
 
 - SAS Viya
 - SAS Studio
+- SAS Studio Flows
+- CAS Server
 - PROC SQL
+- PROC FEDSQL
+- PROC CASUTIL
 - SAS/ACCESS Interface to Oracle
 - Oracle Database
-- Oracle SQL
 - Explicit Pass-Through
 - Implicit Pass-Through
+- CASL
+- Performance Benchmarking
+- Data Quality Processing
 
 ---
 
-## Project Goals
+# Skills Demonstrated
 
-- Execute the original program successfully in SAS Viya
-- Understand the existing business logic
-- Identify optimization opportunities
-- Increase Oracle pushdown utilization
-- Reduce SAS-side processing
-- Improve execution efficiency
-- Validate output consistency
-- Measure performance improvements
-
+- SAS Data Engineering
+- SAS Viya Development
+- Oracle Integration
+- ETL Design
+- Data Pipeline Development
+- CAS Processing
+- SQL Optimization
+- Query Tuning
+- Oracle Pushdown Validation
+- Data Quality
+- Performance Benchmarking
+- Technical Documentation
+- Knowledge Sharing
