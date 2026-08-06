@@ -6,11 +6,10 @@ This repository contains my work for the SAS Data Engineering Case Study, focuse
 2. Natural Disasters Data Project
 3. CAS Research Topic
 
-The objective of the case study was to demonstrate practical SAS Viya skills involving Oracle integration, data engineering, CAS processing, performance optimization, ETL development, and technical knowledge sharing. 【1-4fb255】
-
+The objective of the case study was to demonstrate practical SAS Viya skills involving Oracle integration, data engineering, CAS processing, performance optimization, ETL development, and technical knowledge sharing. 
 ---
 
-
+```text
 student/brunosastre/
 
 ├── countries_project
@@ -18,6 +17,7 @@ student/brunosastre/
 ├── documentation
 ├── presentation
 └── research_topic
+```
 
 ## Documentation
 
