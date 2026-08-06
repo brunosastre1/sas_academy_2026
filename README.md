@@ -10,6 +10,28 @@ The objective of the case study was to demonstrate practical SAS Viya skills inv
 
 ---
 
+
+student/brunosastre/
+
+├── countries_project
+├── natdis_project
+├── documentation
+├── presentation
+└── research_topic
+
+## Documentation
+
+For additional implementation details, refer to:
+
+documentation/developers_guide.md
+
+## Additional Learning Activities
+
+As an additional learning exercise beyond the case study requirements, Git source control was implemented using GitHub and the native SAS Studio Git integration.
+
+This repository was developed and maintained under version control throughout the project lifecycle.
+---
+
 # Project 1 - Countries Data Project
 
 The Countries Data Project focused on improving an existing SAS program that processes World Bank indicator data and standardized country information.
@@ -39,46 +61,6 @@ The project objectives were:
 - COUNTRIES_POP_GDP
 - COUNTRY_LOOKUP 【1-4fb255】
 
----
-
-## Repository
-
-GitHub Repository:
-
-https://github.com/brunosastre1/sas_academy_2026
-
-## Overview
-
-This repository contains the solutions developed for the SAS Data Engineering Case Study.
-
-The implementation is divided into two main projects:
-
-- Countries Data Project
-- Natural Disasters Project
-
-There's a third (research topic).
-
-## Project Structure
-
-student/brunosastre/
-
-├── countries_project
-├── natdis_project
-├── documentation
-├── presentation
-└── research_topic
-
-## Documentation
-
-For additional implementation details, refer to:
-
-documentation/developers_guide.md
-
-## Additional Learning Activities
-
-As an additional learning exercise beyond the case study requirements, Git source control was implemented using GitHub and the native SAS Studio Git integration.
-
-This repository was developed and maintained under version control throughout the project lifecycle.
 
 ---
 # Project 2 - Natural Disasters Data Project
