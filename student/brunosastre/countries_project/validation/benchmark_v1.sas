@@ -1,7 +1,7 @@
 %include "/home/student/github_bruno/student/brunosastre/countries_project/optimized/parameters.sas";
 
 /* ============================================================
- Some parts done with copilot - didn't have time to learn how to parse a log in sas.
+ Some parts of this file (only this one) done with copilot - didn't have time to learn how to parse a log in sas.
 
 COUNTRIES PROJECT BENCHMARK
    Original vs Optimized
