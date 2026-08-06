@@ -2,7 +2,7 @@
 options fullstimer msglevel=i symbolgen;
 
 * converting year, month, day columns to numeric for earthquake, tsunami and volcano - there's no way to alter table using proc cas utils;
-data &lib_cas..earthquake_v2;
+data &lib_cas..earthquake;
     set &lib_cas..earthquake;
 
     year_num  = input(Year, 8.);
@@ -17,7 +17,7 @@ data &lib_cas..earthquake_v2;
 run;
 
 *tsunami;
-data &lib_cas..tsunami_v2;
+data &lib_cas..tsunami;
     set &lib_cas..tsunami;
 
     year_num  = input(Year, 8.);
@@ -32,7 +32,7 @@ data &lib_cas..tsunami_v2;
 run;
 
 *volcano;
-data &lib_cas..volcano_v2;
+data &lib_cas..volcano;
     set &lib_cas..volcano;
 
     year_num  = input(Year, 8.);
@@ -49,7 +49,7 @@ run;
 
 *location - using proc fedsql;
 proc fedsql sessref=&sess_nm. iptrace;
-    create table &lib_cas..location_v2 {options replace=true} as 
+    create table &lib_cas..location {options replace=true} as 
         select *, cast(compress(scan(geo_coordinates, 1, ','),'() ') as double) as latitude, 
         cast(compress(scan(geo_coordinates, 2, ','), '() ') as double) as longitude 
         from &lib_cas..location;
@@ -82,7 +82,8 @@ proc fedsql sessref=&sess_nm. iptrace;
 quit;
 */
 
-*dropping tables and changing the name of the new tables;
+*dropping tables and changing the name of the new tables - moved to cleanup;
+/*
 proc casutil;
     droptable casdata="earthquake" incaslib="&lib_cas." quiet;
     droptable casdata="tsunami"    incaslib="&lib_cas." quiet;
@@ -94,3 +95,4 @@ proc casutil;
     altertable casdata="location_v2" incaslib="&lib_cas." rename="location";
 quit;
 
+*/

@@ -3,5 +3,8 @@
 %include "/home/student/github_bruno/student/brunosastre/natdis_project/02_transform_dataquality/2_1_transform.sas";
 %include "/home/student/github_bruno/student/brunosastre/natdis_project/02_transform_dataquality/2_2_dq.sas";
 %include "/home/student/github_bruno/student/brunosastre/natdis_project/03_join_and_report/3_1_join_and_generate_reporting_tables.sas";
+%include "/home/student/github_bruno/student/brunosastre/natdis_project/04_cleanup/4_1_cleanup.sas";
+%include "/home/student/github_bruno/student/brunosastre/natdis_project/05_reports/5_reports.sas";
+%include "/home/student/github_bruno/student/brunosastre/natdis_project/06_increment_2023_2024/6_increment_data.sas";
 
 

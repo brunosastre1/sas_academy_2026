@@ -7,7 +7,7 @@ options fullstimer msglevel=i symbolgen;
    Setup Config
    ============================================================ */
 
-* main source of data - added this command via autoexec;
+* main source of data;
 libname &lib_sas. '/casestudy/natdis/data/disasters_thru_2022';
 
 
@@ -62,3 +62,6 @@ run;
 
 
 
+libname dis2023 "/casestudy/natdis/data/disasters_2023";
+
+libname dis2024 "/casestudy/natdis/data/disasters_2024";
