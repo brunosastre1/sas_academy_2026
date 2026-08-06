@@ -1,6 +1,9 @@
 %include "/home/student/github_bruno/student/brunosastre/natdis_project/01_setup_load/1_1_parameters.sas";
 options fullstimer msglevel=i symbolgen;
 
+/* capture the upload timestamp once */
+
+%let upload_dt = %sysfunc(datetime());
 /* ============================================================
    Start of Analisys
    ============================================================ */
@@ -224,9 +227,7 @@ proc fedsql sessref=&sess_nm.;
  | Target table will be stored in NATDIS.NATURAL_DISASTERS
  *------------------------------------------------------------*/
 
-/* capture the upload timestamp once */
 
-%let upload_dt = %sysfunc(datetime());
 
 
 /*
@@ -235,7 +236,7 @@ event, with Event_Type identifying whether the row came from
 eq,tsu, or vol */
 
 
-create table natdis.natural_disasters_raw {options replace=true} as
+create table &lib_cas..natural_disasters_raw {options replace=true} as
 
 /*========================================================*
     | EARTHQUAKE records
@@ -296,7 +297,7 @@ from &lib_cas..earthquake e
     left join &lib_cas..eqdetails d
         on e.eq = d.eq
 
-    left join &lib_cas..location_dq l
+    left join &lib_cas..location l
         on coalesce(e.Latitude, d.Latitude) = l.Latitude
         and coalesce(e.Longitude, d.Longitude) = l.Longitude
 
@@ -363,7 +364,7 @@ from &lib_cas..tsunami t
     left join &lib_cas..tsudetails d
         on t.tsu = d.tsu
 
-    left join &lib_cas..location_dq l
+    left join &lib_cas..location l
         on coalesce(t.Latitude, d.Latitude) = l.Latitude
         and coalesce(t.Longitude, d.Longitude) = l.Longitude
 
@@ -430,7 +431,7 @@ from &lib_cas..volcano v
     left join &lib_cas..voldetails d
         on v.vol = d.vol
 
-    left join &lib_cas..location_dq l
+    left join &lib_cas..location l
         on coalesce(v.Latitude, d.Latitude) = l.Latitude
         and coalesce(v.Longitude, d.Longitude) = l.Longitude
 ;
@@ -444,8 +445,8 @@ quit;
  | the required label and a readable datetime format.
  *------------------------------------------------------------*/
 
-data natdis.natural_disasters;
-    set natdis.natural_disasters_raw;
+data &lib_cas..natural_disasters;
+    set &lib_cas..natural_disasters_raw;
 
     label Upload_Date = "Date Uploaded";
     format Upload_Date datetime20.;
@@ -460,7 +461,7 @@ run;
 
 proc casutil;
     droptable casdata="natural_disasters_raw"
-              incaslib="natdis"
+              incaslib="&lib_cas."
               quiet;
   
 quit;
