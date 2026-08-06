@@ -26,7 +26,7 @@ what's different from the dq results and the original value */
 
 proc fedsql sessref=&sess_nm.;
 select distinct Country, Country_DQ
-from &lib_cas..location_dq
+from &lib_cas..location
 where Country <> Country_DQ;
 quit;
 
