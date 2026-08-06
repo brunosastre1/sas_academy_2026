@@ -1,4 +1,5 @@
 %include "/home/student/github_bruno/student/brunosastre/natdis_project/01_setup_load/1_1_parameters.sas";
+options fullstimer msglevel=i symbolgen;
 
 * converting year, month, day columns to numeric for earthquake, tsunami and volcano - there's no way to alter table using proc cas utils;
 data &lib_cas..earthquake_v2;
@@ -86,8 +87,10 @@ proc casutil;
     droptable casdata="earthquake" incaslib="&lib_cas." quiet;
     droptable casdata="tsunami"    incaslib="&lib_cas." quiet;
     droptable casdata="volcano"    incaslib="&lib_cas." quiet;
+    droptable casdata="location"    incaslib="&lib_cas." quiet;
     altertable casdata="earthquake_v2" incaslib="&lib_cas." rename="earthquake";
     altertable casdata="tsunami_v2" incaslib="&lib_cas." rename="tsunami";
-    altertable casdata="volcano" incaslib="&lib_cas." rename="volcano";
+    altertable casdata="volcano_v2" incaslib="&lib_cas." rename="volcano";
+    altertable casdata="location_v2" incaslib="&lib_cas." rename="location";
 quit;
 

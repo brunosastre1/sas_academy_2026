@@ -30,13 +30,13 @@ libname &lib_cas. cas caslib=&lib_cas.;
 
 * push natdis data to a caslib - now it's in memory;
 proc casutil incaslib="&lib_sas." outcaslib="&lib_cas";
-    load data=natdis.earthquake  casout="earthquake"  replace;
-    load data=natdis.tsunami     casout="tsunami"     replace;
-    load data=natdis.volcano     casout="volcano"     replace;
-    load data=natdis.location    casout="location"    replace;
-    load data=natdis.eqdetails   casout="eqdetails"   replace;
-    load data=natdis.tsudetails  casout="tsudetails"  replace;
-    load data=natdis.voldetails  casout="voldetails"  replace;
+    load data=&lib_sas..earthquake  casout="earthquake"  replace;
+    load data=&lib_sas..tsunami     casout="tsunami"     replace;
+    load data=&lib_sas..volcano     casout="volcano"     replace;
+    load data=&lib_sas..location    casout="location"    replace;
+    load data=&lib_sas..eqdetails   casout="eqdetails"   replace;
+    load data=&lib_sas..tsudetails  casout="tsudetails"  replace;
+    load data=&lib_sas..voldetails  casout="voldetails"  replace;
 run;
 
 /* verify if all the tables were successfully copied
