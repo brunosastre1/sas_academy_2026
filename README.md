@@ -43,7 +43,7 @@ The project objectives were:
 - Move processing from SAS Compute to Oracle
 - Use both Explicit and Implicit Pass-Through techniques
 - Validate that optimized results match the original output
-- Measure efficiency improvements using Block I/O operations 【1-4fb255】
+- Measure efficiency improvements using Block I/O operations
 
 ### Key Techniques
 
@@ -59,7 +59,7 @@ The project objectives were:
 ### Outputs
 
 - COUNTRIES_POP_GDP
-- COUNTRY_LOOKUP 【1-4fb255】
+- COUNTRY_LOOKUP 
 
 
 ---
@@ -74,7 +74,7 @@ The project objectives were:
 - Build a maintainable ETL pipeline
 - Process as much data as possible inside CAS
 - Create reusable flows and reporting tables
-- Support incremental data loads for future years 【1-4fb255】
+- Support incremental data loads for future years 
 
 ### Key Techniques
 
@@ -89,7 +89,7 @@ The project objectives were:
 
 ### Main Output
 
-- NATURAL_DISASTERS reporting table containing earthquake, tsunami, volcano, location, and impact information. 【1-4fb255】
+- NATURAL_DISASTERS reporting table containing earthquake, tsunami, volcano, location, and impact information.
 
 ---
 
@@ -102,7 +102,7 @@ The work included:
 - Researching CAS concepts and best practices
 - Creating technical examples and demonstrations
 - Explaining real-world use cases
-- Preparing knowledge-sharing materials and presentations 【1-4fb255】
+- Preparing knowledge-sharing materials and presentations 
 
 Examples of research topics included:
 
@@ -110,7 +110,7 @@ Examples of research topics included:
 - Parquet and Columnar Storage
 - SAS Studio Custom Steps
 - CAS Data Storage Features
-- Data Quality Programming in CAS 【1-4fb255】
+- Data Quality Programming in CAS
 
 ---
 
