@@ -357,6 +357,7 @@ Validation results:
 Validation results:
 
 - 214 rows
+- 4 variables
 - Exact match
 
 The optimized implementation produced equivalent business results.
@@ -431,7 +432,10 @@ benchmark_original.log
 benchmark_optimized.log
 ```
 
-Results are automatically consolidated into a final benchmark report.
+Results are automatically consolidated into the results page in SAS Studio:
+    - Execution Times
+    - Block I/O Summary (validation steps excluded)
+    - Final Benchmark Results (validation steps excluded)
 
 ---
 
