@@ -54,7 +54,7 @@ The project objectives were:
 - Common Table Expressions (CTEs)
 - Oracle Window Functions
 - PROC COMPARE validation
-- Performance benchmarking using FULLSTIMER
+- Performance benchmarking using FULLSTIMER, SASTRACE and other debugging options
 
 ### Outputs
 
