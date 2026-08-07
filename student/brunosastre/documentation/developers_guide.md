@@ -103,7 +103,7 @@ This file centralizes:
 - Project paths
 - Program locations
 - Oracle connection parameters
-- Processing years so I could reuse the years information
+- Processing years so I could reuse the years information in Process_Country_Data_Optimized.sas
 - Performance settings
 - Authentication settings
 
