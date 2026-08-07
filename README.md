@@ -86,20 +86,9 @@ The project objectives were:
 - CASLIB Management
 - ETL Pipeline Development
 
-### Main Output
+### Main Outputs
 
 - NATURAL_DISASTERS reporting table containing earthquake, tsunami, volcano, location, and impact information.
-
----
-
-# Project 3 - Research Topic
-
-The research project focused on investigating and presenting the following topic:
-
-- SAS Studio Custom Steps
-
-
----
 
 # Technologies Used Across the Projects
 
@@ -134,3 +123,16 @@ The research project focused on investigating and presenting the following topic
 - Performance Benchmarking
 - Technical Documentation
 - Knowledge Sharing
+---
+
+# Project 3 - Research Topic
+
+The research project focused on investigating and presenting the following topic:
+
+- SAS Studio Custom Steps
+
+Created a simple example of a SAS Studio Custom Step and added it to the ``research_topic`` directory
+
+---
+
+
