@@ -1125,3 +1125,8 @@ https://go.documentation.sas.com/doc/en/dqcdc/v_051/dqclref/p0k705exnmtpgin1xppk
 ### SAS Studio DevOps: Collaborative Development of SAS Studio Flows and Programs Using Git Integration
 https://communities.sas.com/t5/SAS-Communities-Library/SAS-Studio-DevOps-Collaborative-Development-of-SAS-Studio-Flows/ta-p/920744
 
+### CTEs - Oracle
+https://docs.oracle.com/cd/E17952_01/mysql-8.0-en/with.html
+
+## Unpivot - Oracle
+https://www.oracletutorial.com/oracle-basics/oracle-unpivot/
