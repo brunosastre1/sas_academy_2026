@@ -4,10 +4,32 @@ This repository contains my work for the SAS Data Engineering Case Study, focuse
 
 1. Countries Data Project
 2. Natural Disasters Data Project
-3. CAS Research Topic
+3. Research Topic
 
-The objective of the case study was to demonstrate practical SAS Viya skills involving Oracle integration, data engineering, CAS processing, performance optimization, ETL development, and technical knowledge sharing. 【1-4fb255】
+### The objective of the case study was to demonstrate practical SAS Viya skills involving Oracle integration, data engineering, CAS processing, performance optimization, ETL development, and technical knowledge sharing. 
+---
 
+```text
+student/brunosastre/
+
+├── countries_project
+├── natdis_project
+├── documentation
+├── presentation
+└── research_topic
+```
+
+## Documentation
+
+For additional implementation details, refer to:
+
+documentation/developers_guide.md
+
+## Additional Learning Activities
+
+As an additional learning exercise beyond the case study requirements, Git source control was implemented using GitHub and the native SAS Studio Git integration.
+
+This repository was developed and maintained under version control throughout the project lifecycle.
 ---
 
 # Project 1 - Countries Data Project
@@ -21,7 +43,7 @@ The project objectives were:
 - Move processing from SAS Compute to Oracle
 - Use both Explicit and Implicit Pass-Through techniques
 - Validate that optimized results match the original output
-- Measure efficiency improvements using Block I/O operations 【1-4fb255】
+- Measure efficiency improvements using Block I/O operations
 
 ### Key Techniques
 
@@ -32,15 +54,15 @@ The project objectives were:
 - Common Table Expressions (CTEs)
 - Oracle Window Functions
 - PROC COMPARE validation
-- Performance benchmarking using FULLSTIMER
+- Performance benchmarking using FULLSTIMER, SASTRACE and other debugging options
 
 ### Outputs
 
 - COUNTRIES_POP_GDP
-- COUNTRY_LOOKUP 【1-4fb255】
+- COUNTRY_LOOKUP 
+
 
 ---
-
 # Project 2 - Natural Disasters Data Project
 
 The Natural Disasters project focused on creating an end-to-end ETL pipeline using CAS and SAS Studio Flows.
@@ -52,7 +74,7 @@ The project objectives were:
 - Build a maintainable ETL pipeline
 - Process as much data as possible inside CAS
 - Create reusable flows and reporting tables
-- Support incremental data loads for future years 【1-4fb255】
+- Support incremental data loads for future years 
 
 ### Key Techniques
 
@@ -67,7 +89,7 @@ The project objectives were:
 
 ### Main Output
 
-- NATURAL_DISASTERS reporting table containing earthquake, tsunami, volcano, location, and impact information. 【1-4fb255】
+- NATURAL_DISASTERS reporting table containing earthquake, tsunami, volcano, location, and impact information.
 
 ---
 
@@ -80,7 +102,7 @@ The work included:
 - Researching CAS concepts and best practices
 - Creating technical examples and demonstrations
 - Explaining real-world use cases
-- Preparing knowledge-sharing materials and presentations 【1-4fb255】
+- Preparing knowledge-sharing materials and presentations 
 
 Examples of research topics included:
 
@@ -88,7 +110,7 @@ Examples of research topics included:
 - Parquet and Columnar Storage
 - SAS Studio Custom Steps
 - CAS Data Storage Features
-- Data Quality Programming in CAS 【1-4fb255】
+- Data Quality Programming in CAS
 
 ---
 
@@ -105,7 +127,6 @@ Examples of research topics included:
 - Oracle Database
 - Explicit Pass-Through
 - Implicit Pass-Through
-- CASL
 - Performance Benchmarking
 - Data Quality Processing
 
