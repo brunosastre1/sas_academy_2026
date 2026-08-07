@@ -164,7 +164,7 @@ During implementation, it was observed that SAS Studio Git integration supports 
 
 As a result:
 
-- ✅ SAS Server directories can be synchronized with Git repositories.
-- ❌ SAS Content objects cannot be directly synchronized through the native Git integration.
+-  SAS Server directories can be synchronized with Git repositories.
+-  SAS Content objects cannot be directly synchronized through the native Git integration (as far as I am aware).
 
 Because of this limitation, all source code was maintained in Git-controlled directories on the SAS Server filesystem.
