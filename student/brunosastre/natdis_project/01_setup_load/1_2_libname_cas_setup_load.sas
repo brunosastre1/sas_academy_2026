@@ -61,7 +61,7 @@ run;
     */
 
 
-
+/* additional information about disasters*/
 libname dis2023 "/casestudy/natdis/data/disasters_2023";
 
 libname dis2024 "/casestudy/natdis/data/disasters_2024";
