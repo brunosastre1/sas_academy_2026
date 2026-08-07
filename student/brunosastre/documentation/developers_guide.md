@@ -479,8 +479,7 @@ Key lessons learned during this project include:
 
 The objective of the Natural Disasters Project was to design and implement a complete ETL pipeline using CAS as the primary processing engine.
 
-The solution integrates multiple natural disaster datasets, enriches the data through additional detail tables, standardizes location information, and generates a consolidated reporting table named `NATURAL_DISASTERS`. The project also includes parameterized reporting capabilities and a reusable framework for loading future disaster data from additional years. 【1-b79dce】【2-8540dd】【3-4aa96c】【4-384563】【5-4a20d0】
-
+The solution integrates multiple natural disaster datasets, enriches the data through additional detail tables, standardizes location information, and generates a consolidated reporting table named `NATURAL_DISASTERS`. The project also includes parameterized reporting capabilities and a reusable framework for loading future disaster data from additional years.
 The main goals of the solution were:
 
 - Perform data processing in CAS whenever possible
@@ -524,7 +523,7 @@ Reports
 Incremental Loads (2023+)
 ```
 
-Each stage was implemented in an independent SAS program to improve readability, maintainability and troubleshooting. 【6-bf0a17】
+Each stage was implemented in an independent SAS program to improve readability, maintainability and troubleshooting.
 
 ---
 
@@ -560,7 +559,7 @@ Example:
 %let years_to_load=2023 2024;
 ```
 
-Centralizing these values reduced hardcoded configuration and simplified future maintenance and testing activities. 【1-b79dce】
+Centralizing these values reduced hardcoded configuration and simplified future maintenance and testing activities. 
 
 ---
 
@@ -587,7 +586,7 @@ The following source tables are loaded into CAS:
 - TSUDETAILS
 - VOLDETAILS
 
-Loading operations are performed through PROC CASUTIL. 【2-8540dd】
+Loading operations are performed through PROC CASUTIL.
 
 The setup phase also creates independent libraries for future disaster datasets:
 
@@ -596,7 +595,7 @@ libname dis2023 "/casestudy/natdis/data/disasters_2023";
 libname dis2024 "/casestudy/natdis/data/disasters_2024";
 ```
 
-This separation simplifies incremental loading operations while keeping the historical reporting process unchanged. 【2-8540dd】
+This separation simplifies incremental loading operations while keeping the historical reporting process unchanged. 
 
 ---
 
@@ -629,7 +628,7 @@ day_num   = input(Day, 8.);
 
 NOAA event URLs are generated using the event identifiers.
 
-This allows the final reporting table to include direct navigation links to the original NOAA event information. 【7-b8f7e0】
+This allows the final reporting table to include direct navigation links to the original NOAA event information. 
 
 ---
 
@@ -653,7 +652,7 @@ and
 cast(compress(scan(geo_coordinates, 2, ','), '() ') as double) as longitude
 ```
 
-Creating dedicated numeric coordinate columns simplifies later join operations and enables multi-column matching between event records and location information. 【7-b8f7e0】
+Creating dedicated numeric coordinate columns simplifies later join operations and enables multi-column matching between event records and location information.
 
 ---
 
@@ -685,8 +684,7 @@ Several values were found using non-English spellings or alternative labels, inc
 - HOLLAND
 - THE NETHERLANDS
 
-The exploratory phase helped determine whether a manual mapping approach or a Data Quality approach would be more appropriate. 【8-cf2830】
-
+The exploratory phase helped determine whether a manual mapping approach or a Data Quality approach would be more appropriate. 
 ---
 
 ## 2.8 Data Quality Strategy
@@ -719,7 +717,7 @@ Country_DQ = UPCASE(
 );
 ```
 
-The standardized values are stored in a new column named `Country_DQ`. 【9-282ebb】
+The standardized values are stored in a new column named `Country_DQ`. 
 
 ---
 
@@ -739,7 +737,7 @@ Benefits of using Data Quality functions instead of hardcoded CASE expressions i
 - Reusable standardization logic
 - More realistic enterprise implementation
 
-The decision also provided practical exposure to SAS Data Quality capabilities and the Quality Knowledge Base concepts introduced during the case study. 【9-282ebb】【8-cf2830】
+The decision also provided practical exposure to SAS Data Quality capabilities and the Quality Knowledge Base concepts introduced during the case study.
 
 ---
 
@@ -763,7 +761,7 @@ from location
 where Country <> Country_DQ;
 ```
 
-This allowed direct inspection of modified values and ensured that standardization behaved as expected. 【9-282ebb】【8-cf2830】
+This allowed direct inspection of modified values and ensured that standardization behaved as expected. 
 
 ---
 
@@ -791,7 +789,7 @@ The following identifiers were identified as key relationship candidates:
 | TSUDETAILS | TSU |
 | VOLDETAILS | VOL |
 
-These observations supported the final join design used in the reporting layer. 【10-2409c3】【4-384563】
+These observations supported the final join design used in the reporting layer. 
 
 ---
 
@@ -805,7 +803,7 @@ Validation queries showed:
 - Earthquake records may also contain tsunami identifiers
 - Not all disasters have related events
 
-Because these relationships are optional rather than mandatory, the final design avoided excluding rows based on missing relationships. 【10-2409c3】【4-384563】
+Because these relationships are optional rather than mandatory, the final design avoided excluding rows based on missing relationships.
 
 ---
 
@@ -841,7 +839,7 @@ This satisfies the case study requirement that some joins require more than one 
 
 ### UNION ALL
 
-EARTHQUAKE, TSUNAMI and VOLCANO populations are maintained independently and then combined into a single reporting table using UNION ALL. 【4-384563】【10-2409c3】
+EARTHQUAKE, TSUNAMI and VOLCANO populations are maintained independently and then combined into a single reporting table using UNION ALL. 
 
 ---
 
@@ -867,7 +865,7 @@ Possible values include:
 - TSUNAMI
 - VOLCANO
 
-This design allows multiple event types to coexist in a single reporting structure while preserving event-specific attributes. 【4-384563】【10-2409c3】
+This design allows multiple event types to coexist in a single reporting structure while preserving event-specific attributes. 
 
 ---
 
@@ -886,7 +884,7 @@ The final Upload_Date column is configured with:
 - Label: Date Uploaded
 - Format: DATETIME20.
 
-This provides traceability and allows consumers of the reporting table to identify when records were processed. 【4-384563】【10-2409c3】
+This provides traceability and allows consumers of the reporting table to identify when records were processed. 
 
 ---
 
@@ -910,7 +908,7 @@ Removed tables include:
 - tsudetails
 - voldetails
 
-This leaves the reporting table as the primary artifact within CAS. 【11-6b70a5】
+This leaves the reporting table as the primary artifact within CAS.
 
 ---
 
@@ -930,7 +928,7 @@ Implemented reports include:
 - All events for a selected country
 - Event counts by country for a selected year
 
-This design allows reports to be reused without code modification. 【1-b79dce】【12-5a28f9】
+This design allows reports to be reused without code modification.
 
 ---
 
@@ -957,7 +955,7 @@ The incremental process is executed using:
 %load_natdis();
 ```
 
-This design allows new years to be added by changing only the macro variable definition. 【1-b79dce】【3-4aa96c】【5-4a20d0】
+This design allows new years to be added by changing only the macro variable definition.
 
 ---
 
@@ -980,7 +978,7 @@ For each year the process:
 6. Assigns Upload_Date
 7. Appends results into a consolidated table
 
-This architecture significantly improves maintainability by avoiding duplicated code for each year. 【3-4aa96c】
+This architecture significantly improves maintainability by avoiding duplicated code for each year. 
 
 ---
 
@@ -1004,7 +1002,7 @@ The flow organizes the ETL pipeline into logical stages:
 - Reports
 - Incremental Loads
 
-This visual representation improves maintainability and provides an easy way to demonstrate the pipeline during project presentations. 【6-bf0a17】
+This visual representation improves maintainability and provides an easy way to demonstrate the pipeline during project presentations. 
 
 ---
 
