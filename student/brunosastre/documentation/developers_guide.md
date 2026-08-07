@@ -238,7 +238,7 @@ Benefits:
 
 ## 1.10 Common Table Expressions (CTEs)
 
-The optimized implementation was designed around multiple Common Table Expressions.
+The optimized implementation was designed around multiple Common Table Expressions (temporary result sets)
 
 Major CTE stages include:
 
