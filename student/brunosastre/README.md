@@ -21,7 +21,7 @@ This program automates the execution of both implementations:
 - Original implementation
 - Optimized implementation
 
-In addition, it performs benchmarking activities and generates comparative results that can be used to validate correctness and evaluate performance improvements. It also generates a simple report in PDF located in the validation folder.
+In addition, it performs benchmarking activities and generates comparative results that can be used to validate correctness and evaluate performance improvements. It also generates a VERY simple report in PDF located in the validation folder.
 
 ### Output
 
