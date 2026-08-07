@@ -1,8 +1,7 @@
 %include "/home/student/github_bruno/student/brunosastre/countries_project/optimized/parameters.sas";
 
 /* ============================================================
- Some parts of this file (only this one) done with copilot - didn't have time to learn how to f parse a log in sas.
-
+ 
 COUNTRIES PROJECT BENCHMARK
    Original vs Optimized
 
@@ -29,6 +28,9 @@ COUNTRIES PROJECT BENCHMARK
    case study instruction: "Do not include the steps for verifying
    the output of your program in the efficiency improvement
    calculations."
+
+   Some parts of this file (only this one) done with copilot - didn't have time to learn how to fully parse a log in sas.
+
    ============================================================ */
 
 options fullstimer msglevel=i sastrace=off;

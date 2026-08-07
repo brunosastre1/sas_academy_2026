@@ -1,5 +1,6 @@
 %include "/home/student/github_bruno/student/brunosastre/countries_project/optimized/parameters.sas";
 
+
 /* 
    enable tracing to verify what is being pushed to Oracle
  */
