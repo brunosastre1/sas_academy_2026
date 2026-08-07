@@ -127,7 +127,6 @@ Examples of research topics included:
 - Oracle Database
 - Explicit Pass-Through
 - Implicit Pass-Through
-- CASL
 - Performance Benchmarking
 - Data Quality Processing
 
