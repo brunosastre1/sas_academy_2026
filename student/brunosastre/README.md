@@ -1,96 +1,170 @@
-# Source Control and Development Practices
+# Execution Guide
 
-## Git Repository
+This section describes the recommended execution methods for both projects included in this repository.
 
-As an additional learning activity beyond the mandatory case study requirements, Git source control was implemented and used throughout the project lifecycle.
+---
 
-The complete project repository is available at:
+# Project 1 - Countries Data Project
 
-**GitHub Repository:**  
-[Bruno Sastre - SAS Academy 2026](https://github.com/brunosastre1/sas_academy_2026)
+## Recommended Execution Method
 
-The repository was used to manage:
+The complete Countries Data Project can be executed through a single SAS program:
 
-- Source code versioning
-- Incremental development
-- Backup of project artifacts
-- Change tracking
-- Documentation updates
-- Project organization and traceability
+```text
+countries_project/validation/benchmark_v1.sas
+```
 
-Using Git provided a structured development workflow and allowed all project components to be maintained under version control.
+### Purpose
 
-## SAS Studio Git Integration
+This program automates the execution of both implementations:
 
-Although Git integration was not a requirement of the case study, it was explored and implemented as part of the project in order to gain additional experience with modern development practices in SAS Viya.
+- Original implementation
+- Optimized implementation
 
-The following capabilities were evaluated and used:
+In addition, it performs benchmarking activities and generates comparative results that can be used to validate correctness and evaluate performance improvements.
 
-- Repository cloning from GitHub
-- Commit and synchronization workflows
-- Version tracking of SAS programs
-- Project organization using a Git-based structure
-- Integration between SAS Studio and GitHub
+### Output
 
-This additional work helped improve project maintainability and provided hands-on experience using source control within the SAS Viya ecosystem.
+The execution produces:
 
-## SAS Studio Git Integration Limitation
+- Original process results
+- Optimized process results
+- Benchmark information
+- Performance comparison metrics
 
-During implementation, an important limitation of the current SAS Studio Git integration was identified.
+### Project Location
 
-Git synchronization is supported only for files stored within directories that are accessible through the SAS Server filesystem.
+```text
+student/
+└── brunosastre/
+    └── countries_project/
+        ├── original/
+        ├── optimized/
+        ├── validation/
+        │   └── benchmark_v1.sas
+        ├── logs/
+        └── exploration/
+```
 
-As a result:
+---
 
--  Git repositories can be synchronized with directories stored on the SAS Server filesystem.
--  SAS Content objects cannot be directly synchronized with Git repositories using the native SAS Studio Git integration.
+# Project 2 - Natural Disasters Project
 
-Because of this limitation, the project source code was organized and maintained within the Linux filesystem on the SAS Server, allowing direct integration with GitHub while using SAS Content only when required by the case study.
+The Natural Disasters Project can be executed using two different methods.
 
-## Repository Structure
+## Method 1 - Execute the Main Driver Program
 
-The repository was organized to separate project components, benchmarks, documentation, and deliverables.
+Recommended for automated execution.
+
+Program:
+
+```text
+natdis_project/main_tester.sas
+```
+
+This program orchestrates the complete ETL pipeline and executes all project stages in sequence.
+
+Execution order:
+
+```text
+01_setup_load
+↓
+02_transform_dataquality
+↓
+03_join_and_report
+↓
+04_cleanup
+↓
+05_reports
+↓
+06_increment_2023_2024
+```
+
+### Project Location
+
+```text
+student/
+└── brunosastre/
+    └── natdis_project/
+        ├── main_tester.sas
+        ├── 01_setup_load/
+        ├── 02_transform_dataquality/
+        ├── 03_join_and_report/
+        ├── 04_cleanup/
+        ├── 05_reports/
+        └── 06_increment_2023_2024/
+```
+
+---
+
+## Method 2 - Execute the SAS Studio Flow
+
+Recommended for visual execution and demonstration purposes.
+
+Flow:
+
+```text
+natdis_project/natdis_project_flow.flw
+```
+
+The flow provides a graphical representation of the ETL pipeline and allows the complete project to be executed through a single action in SAS Studio.
+
+The flow was organized into logical ETL stages to improve readability, maintainability and troubleshooting.
+
+### SAS Studio Flow Location
+
+```text
+student/
+└── brunosastre/
+    └── natdis_project/
+        └── natdis_project_flow.flw
+```
+
+### Flow Structure
+
+- Setup and Load
+- Transformations
+- Data Quality
+- Join and Reporting
+- Cleanup
+- Reports
+- Incremental Loads
+
+### Example Repository Structure
+
+The repository is organized as shown below:
 
 ```text
 student/
 └── brunosastre
     ├── countries_project
-    │   ├── exploration
-    │   ├── logs
-    │   ├── optimized
-    │   ├── original
-    │   └── validation
-    │
+    ├── documentation
     ├── natdis_project
-    │   ├── 01_setup_load
-    │   ├── 02_transform_dataquality
-    │   ├── 03_join_and_report
-    │   ├── 04_cleanup
-    │   ├── 05_reports
-    │   ├── 06_increment_2023_2024
-    │   ├── 07_data_exploration
     │   ├── main_tester.sas
     │   └── natdis_project_flow.flw
-    │
-    ├── documentation
     ├── presentation
     └── research_topic
 ```
 
-## Additional Value
+---
 
-The use of GitHub and SAS Studio Git integration was not required to complete the case study. However, it provided additional experience with:
+# Source Control
 
-- Source control best practices
-- Change management
-- Project traceability
-- Code organization
-- Reproducible development workflows
+As an additional learning activity beyond the case study requirements, GitHub source control and SAS Studio Git integration were used throughout the project lifecycle.
 
-These practices are commonly used in enterprise software and data engineering projects and helped maintain a structured and maintainable solution throughout the case study.
+Repository:
 
-## Lessons Learned
+[Bruno Sastre - SAS Academy 2026](https://github.com/brunosastre1/sas_academy_2026)
 
-Working with Git inside SAS Studio provided valuable insight into how modern software development practices can be combined with SAS development. While the current integration has limitations regarding SAS Content synchronization, it is highly effective for managing SAS programs, documentation, and project artifacts stored on the SAS Server filesystem.
+Git integration was used to maintain source code versioning, project history and development traceability.
 
-The experience reinforced the importance of version control, reproducibility, and repository organization as part of a professional data engineering workflow.
+## SAS Studio Git Limitation
+
+During implementation, it was observed that SAS Studio Git integration supports synchronization only for files located on the SAS Server filesystem.
+
+As a result:
+
+- ✅ SAS Server directories can be synchronized with Git repositories.
+- ❌ SAS Content objects cannot be directly synchronized through the native Git integration.
+
+Because of this limitation, all source code was maintained in Git-controlled directories on the SAS Server filesystem.
