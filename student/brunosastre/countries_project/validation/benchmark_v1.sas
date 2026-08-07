@@ -378,3 +378,14 @@ proc print data=work.final_results noobs;
 run;
 
 title;
+
+
+/* Cleanup */
+
+proc datasets lib=work memtype=data;
+delete block_lines block_lines_optimized block_lines_original
+countries countries_pop_gdp countries_pop_gdp_partial countries_pop_gdp_rows 
+countries_pop_indicators countries_pop_indicators_sorted countries_sorted country_lookup
+Country_with_dups gdp gdp_sorted gdp_transpose gdp_wide pop_growth pop_growth_char_backup
+population_indicators population_sorted regions same_names same_codes pop_growth_sorted population population_char_backup;
+run;
