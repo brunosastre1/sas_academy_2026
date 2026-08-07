@@ -412,7 +412,7 @@ This approach guarantees that only operational ETL processing contributes to per
 
 ---
 
-## 5.16 Log Parsing Design
+## 1.16 Log Parsing Design
 
 The benchmark framework automatically parses execution logs and extracts relevant metrics.
 
@@ -471,6 +471,10 @@ Key lessons learned during this project include:
 - Performance measurements should exclude validation activities.
 - Centralized configuration improves maintainability and code reuse.
 - Database-side processing can dramatically reduce data movement and I/O consumption.
+
+## 1.19 Opportunities for Future Improvements
+
+
 
 
 # 2. Natural Disasters Project
