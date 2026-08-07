@@ -15,7 +15,6 @@ student/brunosastre/
 ├── countries_project
 ├── natdis_project
 ├── documentation
-├── presentation
 └── research_topic
 ```
 
@@ -93,28 +92,16 @@ The project objectives were:
 
 ---
 
-# Project 3 - CAS Research Topic
+# Project 3 - Research Topic
 
-The research project focused on investigating and presenting a CAS-related topic to increase customer knowledge of SAS Viya capabilities.
+The research project focused on investigating and presenting the following topic:
 
-The work included:
-
-- Researching CAS concepts and best practices
-- Creating technical examples and demonstrations
-- Explaining real-world use cases
-- Preparing knowledge-sharing materials and presentations 
-
-Examples of research topics included:
-
-- CAS Data Manipulation Techniques
-- Parquet and Columnar Storage
 - SAS Studio Custom Steps
-- CAS Data Storage Features
-- Data Quality Programming in CAS
+
 
 ---
 
-# Technologies Used
+# Technologies Used Across the Projects
 
 - SAS Viya
 - SAS Studio
