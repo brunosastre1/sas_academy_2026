@@ -103,7 +103,7 @@ This file centralizes:
 - Project paths
 - Program locations
 - Oracle connection parameters
-- Processing years
+- Processing years so I could reuse the years information
 - Performance settings
 - Authentication settings
 
