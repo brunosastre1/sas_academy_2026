@@ -475,6 +475,21 @@ Key lessons learned during this project include:
 ## 1.19 Opportunities for Future Improvements
 
 
+- Establish and consistently apply a formal naming convention across all SAS programs, datasets, and supporting artifacts to improve maintainability and readability.
+
+- Improve the reporting layer by providing more user-friendly outputs
+
+- Refactor the benchmarking framework (`benchmark_v1.sas`). While the current implementation successfully automates performance measurements and log parsing, the overall design could benefit from modularization, code cleanup, and improved parsing logic.
+
+- Continue exploring opportunities to leverage additional native SAS functionality while preserving the overall performance gains achieved through Oracle pushdown processing.
+
+- Investigate alternative approaches for working with temporary and intermediate tables, including the use of Oracle temporary objects, CTEs, and CAS-based staging structures, in order to further reduce resource utilization and simplify cleanup activities.
+
+- Expand benchmark reporting to include additional performance indicators beyond Block I/O, such as CPU utilization, elapsed time by processing stage, and Oracle execution statistics.
+
+- Improve automation of validation activities by reducing manual review requirements and generating consolidated validation reports directly from benchmark execution.
+
+- Develop reusable utility macros for performance measurements, validation routines, and log analysis in order to simplify future optimization projects.
 
 
 # 2. Natural Disasters Project
