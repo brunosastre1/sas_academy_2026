@@ -479,12 +479,12 @@ Key lessons learned during this project include:
 
 The objective of the Natural Disasters Project was to design and implement a complete ETL pipeline using CAS as the primary processing engine.
 
-The solution integrates multiple natural disaster datasets, enriches the data through additional detail tables, standardizes location information, and generates a consolidated reporting table named `NATURAL_DISASTERS`. The project also includes parameterized reporting capabilities and a reusable framework for loading future disaster data from additional years.
+The solution integrates multiple natural disaster datasets, enriches the data through additional detail tables, standardizes location information, and generates a consolidated reporting table named `NATURAL_DISASTERS` and a report named `benchmark_report.pdf` . The project also includes parameterized reporting capabilities and a reusable framework for loading future disaster data from additional years.
 The main goals of the solution were:
 
 - Perform data processing in CAS whenever possible
 - Demonstrate CAS-based ETL techniques
-- Apply Data Quality standardization
+- Apply Data Quality standardization (Using QKB)
 - Build a consolidated reporting layer
 - Design a reusable loading process for future years
 - Organize the pipeline through both modular SAS programs and SAS Studio Flows
@@ -520,7 +520,7 @@ Cleanup
 Reports
       |
       v
-Incremental Loads (2023+)
+Incremental Loads (2023 and 2024)
 ```
 
 Each stage was implemented in an independent SAS program to improve readability, maintainability and troubleshooting.
@@ -725,7 +725,7 @@ The standardized values are stored in a new column named `Country_DQ`.
 
 During development, a manual CASE-based standardization strategy was initially evaluated.
 
-However, the final implementation adopted `dqStandardize()` because it leverages the SAS Data Quality framework and country standardization definitions available through the Data Quality environment.
+However, the final implementation adopted `dqStandardize()`.
 
 The `Country` standardization definition acts as a reusable ruleset that normalizes country names according to predefined matching and standardization logic.
 
@@ -733,9 +733,7 @@ Benefits of using Data Quality functions instead of hardcoded CASE expressions i
 
 - Improved maintainability
 - Reduced custom mapping rules
-- Better scalability
 - Reusable standardization logic
-- More realistic enterprise implementation
 
 The decision also provided practical exposure to SAS Data Quality capabilities and the Quality Knowledge Base concepts introduced during the case study.
 
@@ -1036,3 +1034,22 @@ Key lessons learned during the project include:
 - LEFT JOIN strategies help preserve event populations when enrichment relationships are optional.
 - Macro-driven incremental processing improves scalability and maintainability.
 - SAS Studio Flows provide a useful abstraction layer for ETL orchestration and solution presentation.
+
+## 2.23 Opportunities for Future Improvements
+
+
+- Generalize the assignment of yearly source libraries (e.g., DIS2023, DIS2024) through a metadata-driven approach, allowing future datasets to be onboarded automatically without requiring additional LIBNAME statements.
+
+- Refactor the `load_natdis()` macro. While the current implementation fulfills the incremental loading requirement, the solution became more complex than initially intended. Given additional time, the logic could be simplified to improve readability, maintainability, and extensibility.
+
+- Investigate more efficient approaches for handling data type conversions across CAS tables, reducing the need for explicit transformation steps and table recreation.
+
+- Further analyze FEDSQL IPTRACE results and pushdown behavior. 
+
+- Improve the handling of explicit `CAST()` operations in the reporting table creation process. The current implementation relies on multiple casts to ensure schema consistency across UNION operations; a more elegant design could standardize data types earlier in the ETL pipeline.
+
+- Enhance the reporting layer by providing richer and more user-friendly outputs
+
+- Extend the SAS Studio Flow by incorporating validation checkpoints and quality gates between stages, ensuring that downstream tasks execute only when prerequisite validations complete successfully.
+ 
+- Evaluate the use of reusable utility macros and shared framework components to further reduce code duplication and improve maintainability across future projects.
