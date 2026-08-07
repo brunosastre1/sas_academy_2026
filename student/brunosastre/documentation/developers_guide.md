@@ -471,3 +471,570 @@ Key lessons learned during this project include:
 - Performance measurements should exclude validation activities.
 - Centralized configuration improves maintainability and code reuse.
 - Database-side processing can dramatically reduce data movement and I/O consumption.
+
+
+# 2. Natural Disasters Project
+
+## 2.1 Project Overview
+
+The objective of the Natural Disasters Project was to design and implement a complete ETL pipeline using CAS as the primary processing engine.
+
+The solution integrates multiple natural disaster datasets, enriches the data through additional detail tables, standardizes location information, and generates a consolidated reporting table named `NATURAL_DISASTERS`. The project also includes parameterized reporting capabilities and a reusable framework for loading future disaster data from additional years. 【1-b79dce】【2-8540dd】【3-4aa96c】【4-384563】【5-4a20d0】
+
+The main goals of the solution were:
+
+- Perform data processing in CAS whenever possible
+- Demonstrate CAS-based ETL techniques
+- Apply Data Quality standardization
+- Build a consolidated reporting layer
+- Design a reusable loading process for future years
+- Organize the pipeline through both modular SAS programs and SAS Studio Flows
+
+---
+
+## 2.2 Overall Architecture
+
+The project was designed as a modular ETL pipeline.
+
+```text
+Source Files
+      |
+      v
+Setup and Loading
+      |
+      v
+Data Transformation
+      |
+      v
+Data Quality Processing
+      |
+      v
+Join Discovery and Validation
+      |
+      v
+Reporting Table Creation
+      |
+      v
+Cleanup
+      |
+      v
+Reports
+      |
+      v
+Incremental Loads (2023+)
+```
+
+Each stage was implemented in an independent SAS program to improve readability, maintainability and troubleshooting. 【6-bf0a17】
+
+---
+
+## 2.3 Configuration and Parameterization
+
+The project uses a centralized configuration model.
+
+File:
+
+```text
+01_setup_load/1_1_parameters.sas
+```
+
+This file centralizes:
+
+- Project paths
+- SAS source library name
+- CAS library name
+- CAS session name
+- Report parameters
+- Incremental load parameters
+
+Example:
+
+```sas
+%let lib_sas=natdis;
+%let lib_cas=natCas;
+%let sess_nm=disasterSession;
+
+%let report_country='JAPAN';
+%let report_year=2022;
+
+%let years_to_load=2023 2024;
+```
+
+Centralizing these values reduced hardcoded configuration and simplified future maintenance and testing activities. 【1-b79dce】
+
+---
+
+## 2.4 CAS Session and Caslib Design
+
+The project was intentionally designed around CAS.
+
+The setup phase creates:
+
+- A SAS library pointing to the source files
+- A CAS session
+- A path-based caslib
+- A CAS library reference
+
+Source data is initially accessed through the SAS Compute Server and then loaded into CAS memory.
+
+The following source tables are loaded into CAS:
+
+- EARTHQUAKE
+- TSUNAMI
+- VOLCANO
+- LOCATION
+- EQDETAILS
+- TSUDETAILS
+- VOLDETAILS
+
+Loading operations are performed through PROC CASUTIL. 【2-8540dd】
+
+The setup phase also creates independent libraries for future disaster datasets:
+
+```sas
+libname dis2023 "/casestudy/natdis/data/disasters_2023";
+libname dis2024 "/casestudy/natdis/data/disasters_2024";
+```
+
+This separation simplifies incremental loading operations while keeping the historical reporting process unchanged. 【2-8540dd】
+
+---
+
+## 2.5 Data Transformation Strategy
+
+The transformation phase prepares source tables for integration and reporting.
+
+File:
+
+```text
+02_transform_dataquality/2_1_transform.sas
+```
+
+The transformation stage performs:
+
+- Numeric conversion of date components
+- URL generation
+- Extraction of Latitude and Longitude values
+- Standardization of structures used in downstream joins
+
+For disaster source tables, Year, Month and Day are converted from character variables into numeric values.
+
+Example:
+
+```sas
+year_num  = input(Year, 8.);
+month_num = input(Month, 8.);
+day_num   = input(Day, 8.);
+```
+
+NOAA event URLs are generated using the event identifiers.
+
+This allows the final reporting table to include direct navigation links to the original NOAA event information. 【7-b8f7e0】
+
+---
+
+## 6.6 Geographic Normalization
+
+The LOCATION table contains a character column named `Geo_Coordinates`.
+
+This field stores latitude and longitude values as a single string representation.
+
+The solution creates explicit numeric Latitude and Longitude columns using PROC FEDSQL.
+
+Example:
+
+```sql
+cast(compress(scan(geo_coordinates, 1, ','),'() ') as double) as latitude
+```
+
+and
+
+```sql
+cast(compress(scan(geo_coordinates, 2, ','), '() ') as double) as longitude
+```
+
+Creating dedicated numeric coordinate columns simplifies later join operations and enables multi-column matching between event records and location information. 【7-b8f7e0】
+
+---
+
+## 2.7 Exploratory Data Analysis
+
+Before implementing Data Quality processing, exploratory analysis was performed to understand data characteristics and identify inconsistencies.
+
+File:
+
+```text
+07_data_exploration/data_exploration.sas
+```
+
+The exploration used:
+
+- PROC MDSUMMARY
+- PROC FREQ
+- PROC CAS Simple.Freq
+- PROC FEDSQL
+
+The primary objective was evaluating the Country field values and identifying non-standardized country names.
+
+Several values were found using non-English spellings or alternative labels, including examples such as:
+
+- INDE
+- ITALIE
+- JAPON
+- MEXIQUE
+- HOLLAND
+- THE NETHERLANDS
+
+The exploratory phase helped determine whether a manual mapping approach or a Data Quality approach would be more appropriate. 【8-cf2830】
+
+---
+
+## 2.8 Data Quality Strategy
+
+Data Quality processing was implemented using SAS Data Quality functions.
+
+File:
+
+```text
+02_transform_dataquality/2_2_dq.sas
+```
+
+The process begins by generating frequency distributions for the Country field.
+
+This allows the identification of:
+
+- Spelling variations
+- Alternate country names
+- Non-English country labels
+- Potential data quality issues
+
+After the assessment phase, country values are standardized using:
+
+```sas
+Country_DQ = UPCASE(
+    dqStandardize(
+        Country,
+        'Country'
+    )
+);
+```
+
+The standardized values are stored in a new column named `Country_DQ`. 【9-282ebb】
+
+---
+
+## 2.9 Use of the Quality Knowledge Base (QKB)
+
+During development, a manual CASE-based standardization strategy was initially evaluated.
+
+However, the final implementation adopted `dqStandardize()` because it leverages the SAS Data Quality framework and country standardization definitions available through the Data Quality environment.
+
+The `Country` standardization definition acts as a reusable ruleset that normalizes country names according to predefined matching and standardization logic.
+
+Benefits of using Data Quality functions instead of hardcoded CASE expressions include:
+
+- Improved maintainability
+- Reduced custom mapping rules
+- Better scalability
+- Reusable standardization logic
+- More realistic enterprise implementation
+
+The decision also provided practical exposure to SAS Data Quality capabilities and the Quality Knowledge Base concepts introduced during the case study. 【9-282ebb】【8-cf2830】
+
+---
+
+## 2.10 Validation of Data Quality Processing
+
+Multiple validation techniques were applied after standardization.
+
+Validation included:
+
+- Country frequency distributions before standardization
+- Country frequency distributions after standardization
+- Comparison between original and standardized values
+
+Example:
+
+```sql
+select distinct
+    Country,
+    Country_DQ
+from location
+where Country <> Country_DQ;
+```
+
+This allowed direct inspection of modified values and ensured that standardization behaved as expected. 【9-282ebb】【8-cf2830】
+
+---
+
+## 2.11 Join Discovery Methodology
+
+The case study intentionally did not provide explicit primary keys for all tables.
+
+For this reason, a dedicated investigative phase was performed before implementing joins.
+
+The analysis focused on:
+
+- Reviewing table structures
+- Identifying shared identifiers
+- Validating relationship cardinality
+- Confirming expected row counts
+
+The following identifiers were identified as key relationship candidates:
+
+| Table | Identifier |
+|---------|------------|
+| EARTHQUAKE | EQ |
+| TSUNAMI | TSU |
+| VOLCANO | VOL |
+| EQDETAILS | EQ |
+| TSUDETAILS | TSU |
+| VOLDETAILS | VOL |
+
+These observations supported the final join design used in the reporting layer. 【10-2409c3】【4-384563】
+
+---
+
+## 2.12 Relationship Analysis
+
+Additional exploration was performed to understand whether earthquakes, tsunamis and volcanoes could be related events.
+
+Validation queries showed:
+
+- Some earthquake records contain a volcano identifier
+- Earthquake records may also contain tsunami identifiers
+- Not all disasters have related events
+
+Because these relationships are optional rather than mandatory, the final design avoided excluding rows based on missing relationships. 【10-2409c3】【4-384563】
+
+---
+
+## 2.13 Join Strategy
+
+The final reporting table uses a combination of:
+
+- LEFT JOIN
+- Multi-column location joins
+- UNION ALL
+
+Important design decisions include:
+
+### LEFT JOIN for Enrichment Tables
+
+Detail tables are treated as optional enrichments.
+
+LEFT JOIN preserves all disaster events even when matching detail records are unavailable.
+
+### Multi-Column LOCATION Join
+
+Location matching uses:
+
+```text
+Latitude
++
+Longitude
+```
+
+instead of a single identifier.
+
+This satisfies the case study requirement that some joins require more than one join condition.
+
+### UNION ALL
+
+EARTHQUAKE, TSUNAMI and VOLCANO populations are maintained independently and then combined into a single reporting table using UNION ALL. 【4-384563】【10-2409c3】
+
+---
+
+## 1.14 Reporting Table Design
+
+The final reporting table is:
+
+```text
+NATURAL_DISASTERS
+```
+
+The table stores one row per natural disaster event.
+
+The source event population is tracked through:
+
+```text
+Event_Type
+```
+
+Possible values include:
+
+- EARTHQUAKE
+- TSUNAMI
+- VOLCANO
+
+This design allows multiple event types to coexist in a single reporting structure while preserving event-specific attributes. 【4-384563】【10-2409c3】
+
+---
+
+## 2.15 Upload Timestamp Design
+
+The solution captures a single upload timestamp at runtime:
+
+```sas
+%let upload_dt = %sysfunc(datetime());
+```
+
+This timestamp is assigned to every row inserted during the execution.
+
+The final Upload_Date column is configured with:
+
+- Label: Date Uploaded
+- Format: DATETIME20.
+
+This provides traceability and allows consumers of the reporting table to identify when records were processed. 【4-384563】【10-2409c3】
+
+---
+
+## 2.16 Cleanup Design
+
+After validation and reporting table creation, source tables are removed from CAS.
+
+File:
+
+```text
+04_cleanup/4_1_cleanup.sas
+```
+
+Removed tables include:
+
+- earthquake
+- tsunami
+- volcano
+- location
+- eqdetails
+- tsudetails
+- voldetails
+
+This leaves the reporting table as the primary artifact within CAS. 【11-6b70a5】
+
+---
+
+## 2.17 Reporting Design
+
+The reporting layer is parameterized through macro variables.
+
+Examples:
+
+```sas
+%let report_country='JAPAN';
+%let report_year=2022;
+```
+
+Implemented reports include:
+
+- All events for a selected country
+- Event counts by country for a selected year
+
+This design allows reports to be reused without code modification. 【1-b79dce】【12-5a28f9】
+
+---
+
+## 2.18 Incremental Load Design
+
+A reusable incremental load framework was implemented to support future datasets.
+
+Files:
+
+```text
+01_setup_load/1_3_functions.sas
+06_increment_2023_2024/6_increment_data.sas
+```
+
+The years to process are controlled through:
+
+```sas
+%let years_to_load=2023 2024;
+```
+
+The incremental process is executed using:
+
+```sas
+%load_natdis();
+```
+
+This design allows new years to be added by changing only the macro variable definition. 【1-b79dce】【3-4aa96c】【5-4a20d0】
+
+---
+
+## 2.19 Incremental Load Macro Architecture
+
+The macro dynamically processes:
+
+```text
+DIS2023.NATDIS2023
+DIS2024.NATDIS2024
+```
+
+For each year the process:
+
+1. Loads the yearly dataset
+2. Standardizes field names
+3. Converts data types
+4. Maps source columns to the reporting schema
+5. Creates missing columns
+6. Assigns Upload_Date
+7. Appends results into a consolidated table
+
+This architecture significantly improves maintainability by avoiding duplicated code for each year. 【3-4aa96c】
+
+---
+
+## 2.20 SAS Studio Flow Design
+
+The project includes a SAS Studio Flow implementation.
+
+File:
+
+```text
+natdis_project_flow.flw
+```
+
+The flow organizes the ETL pipeline into logical stages:
+
+- Setup and Load
+- Transformations
+- Data Quality
+- Reporting Table Generation
+- Cleanup
+- Reports
+- Incremental Loads
+
+This visual representation improves maintainability and provides an easy way to demonstrate the pipeline during project presentations. 【6-bf0a17】
+
+---
+
+## 2.21 Design Outcomes
+
+Major design outcomes include:
+
+- CAS-based in-memory processing
+- Modular ETL architecture
+- Data Quality standardization using SAS functions
+- Multi-stage validation and exploration
+- FEDSQL-based reporting table creation
+- Reusable incremental load framework
+- Parameterized reporting
+- Flow-based orchestration
+- Maintainable project structure
+
+The resulting architecture emphasizes maintainability, traceability, reusability and alignment with SAS Viya best practices.
+
+---
+
+## 2.22 Lessons Learned
+
+Key lessons learned during the project include:
+
+- CAS enables efficient in-memory ETL processing.
+- PROC CASUTIL simplifies CAS table lifecycle management.
+- FEDSQL provides a flexible framework for reporting-table creation.
+- Data Quality functions can replace extensive manual standardization logic.
+- Exploratory analysis is critical when primary keys are not explicitly defined.
+- LEFT JOIN strategies help preserve event populations when enrichment relationships are optional.
+- Macro-driven incremental processing improves scalability and maintainability.
+- SAS Studio Flows provide a useful abstraction layer for ETL orchestration and solution presentation.
