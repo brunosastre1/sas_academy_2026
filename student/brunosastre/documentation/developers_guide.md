@@ -55,23 +55,12 @@ These exploratory activities helped identify areas where the original processing
 
 The original implementation relied heavily on SAS Compute Server processing.
 
-Major processing stages included:
-
-- Copying source data from Oracle to SAS WORK
-- Multiple PROC SORT operations
-- DATA Step merges
-- PROC TRANSPOSE execution
-- Creation of several intermediate datasets
-- Final upload of output tables back to Oracle
-
 The original architecture generated:
 
 - Multiple processing passes through the data
 - Significant Oracle-to-SAS data movement
 - Increased Block I/O activity
 - Additional temporary datasets
-
-Although functionally correct, the design did not fully leverage Oracle processing capabilities.
 
 ---
 
