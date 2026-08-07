@@ -1072,3 +1072,41 @@ Key lessons learned during the project include:
 - Extend the SAS Studio Flow by incorporating validation checkpoints and quality gates between stages, ensuring that downstream tasks execute only when prerequisite validations complete successfully.
  
 - Evaluate the use of reusable utility macros and shared framework components to further reduce code duplication and improve maintainability across future projects.
+
+---
+## References:
+
+###SAS® Viya® Platform: FedSQL Programming for SAS® Cloud Analytic Services
+https://go.documentation.sas.com/doc/en/pgmsascdc/v_077/casfedsql/titlepage.htm
+
+###Procedures Listed Alphabetically
+https://go.documentation.sas.com/doc/en/pgmsascdc/v_077/procs2actions/p0275qj00ns5pen16ijvuz8f8j5k.htm#n1g8vzsk4tarxjn1r237lf6owbwi
+
+###CASUTIL Procedure
+https://go.documentation.sas.com/doc/en/pgmsascdc/v_077/casref/p1momv516ndlt7n1vhgva4urpuk6.htm
+
+###Programming with the SQL Procedure
+https://go.documentation.sas.com/doc/en/pgmsascdc/v_073/sqlproc/titlepage.htm
+
+###SAS/ACCESS Interface to Oracle
+https://go.documentation.sas.com/doc/en/pgmsascdc/v_061/acreldb/p1ujrhdoe1p743n12awcf7mwyg81.htm
+
+###Drop an In-Memory Table
+https://go.documentation.sas.com/doc/en/pgmsascdc/v_061/casref/n1r4u861siw66nn1m7myklz7axdg.htm
+
+###Overview: Optimizing Your SQL Usage
+https://go.documentation.sas.com/doc/en/pgmsascdc/v_061/acreldb/p0i83h6dfg0ex8n15j8vhl6ljtbw.htm
+
+###Syntax: SQL Pass-Through Facility for Relational Databases
+https://go.documentation.sas.com/doc/en/pgmsascdc/v_061/acreldb/n0jhd9y0wb161rn1gp04zvjdqak7.htm
+
+###Accessing Your QKB Documentation
+https://go.documentation.sas.com/doc/en/qkbcstmref/latest/n1q4vo7o0xrp9vn1ebwi06gv9oez.htm
+
+###Data Quality - Functions and CALL Routines
+https://go.documentation.sas.com/doc/en/dqcdc/v_051/dqclref/n0qpz9st6bzbexn1p7cfgzzpw6z3.htm
+
+###DQSTANDARDIZE Function
+https://go.documentation.sas.com/doc/en/dqcdc/v_051/dqclref/p0k705exnmtpgin1xppkpx5f7r30.htm
+
+
