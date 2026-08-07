@@ -356,29 +356,87 @@ proc sql;
         work.io_savings as i;
 quit;
 
+
 /* ============================================================
-   Print results in SAS Studio
+   Print results in SAS Studio and save to directory
    ============================================================ */
 
-title "Execution Times";
+   * not the most elegant way to display a report - could have used html5 with proc print (and many other solutions) but ran out of time;
+%let style=^S={font_weight=bold font_size=12pt just=center};
+
+/* Open the ODS PDF destination (ods excel or ods html can also be used) */
+ods pdf file="&report_path." startpage=no;
+
+ods escapechar='^';
+
+ods text = "&style.Execution Times";
 proc print data=work.execution_times noobs;
 run;
+
 
 /*
 title "Block I/O Lines Extracted from Logs (validation steps excluded)";
 proc print data=work.io_values noobs;
-run;*/
+run;
+*/
 
-title "Block I/O Summary (validation steps excluded)";
+ods text =  "&style.Block I/O Summary (validation steps excluded)";
 proc print data=work.io_results noobs;
 run;
 
-title "Final Benchmark Results (validation steps excluded)";
+
+
+
+ods text =  "&style.Final Benchmark Results (validation steps excluded)";
 proc print data=work.final_results noobs;
 run;
 
-title;
 
+
+ods text =  "&style.Data sample from Countries POP GDP (Not Optimized and Optimized)";
+proc print data=work.orig_countries_pop_gdp(obs=10) noobs;
+run;
+
+proc print data=work.new_countries_pop_gdp(obs=10) noobs ;
+run;
+
+proc sql;
+    select count(*) as Original_Pop_GDP_Table from work.orig_countries_pop_gdp;
+    select count(*) as New_Pop_GDP_Table from work.new_countries_pop_gdp;
+run;
+
+
+
+ods text =  "&style.Data sample from Country Lookup (Not Optimized and Optimized)";
+proc print data=work.orig_country_lookup(obs=10) noobs ;
+run;
+
+proc print data=work.new_country_lookup(obs=10) noobs ;
+run;
+
+
+proc sql;
+    select count(*) as Original_Country_Lookup from work.orig_country_lookup;
+    select count(*) as New_Country_Lookup from work.new_country_lookup;
+run;
+
+
+
+
+/* Close the ODS PDF destination*/
+ods pdf close;
+
+
+/* ============================================================
+   Cleanup
+   ============================================================ */
+proc datasets lib=work memtype=data nolist;
+    delete block_lines block_lines_optimized block_lines_original
+           countries countries_pop_gdp countries_pop_gdp_partial countries_pop_gdp_rows 
+           countries_pop_indicators countries_pop_indicators_sorted countries_sorted country_lookup
+           Country_with_dups gdp gdp_sorted gdp_transpose gdp_wide pop_growth pop_growth_char_backup
+           population_indicators population_sorted regions same_names same_codes pop_growth_sorted population population_char_backup;
+quit;
 
 /* Cleanup */
 

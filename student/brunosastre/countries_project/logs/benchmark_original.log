@@ -1,15 +1,15 @@
 NOTE: PROCEDURE PRINTTO used (Total process time):
-      real time           0.00 seconds
+      real time           0.02 seconds
       user cpu time       0.00 seconds
       system cpu time     0.00 seconds
-      memory              99.18k
-      OS Memory           72824.00k
-      Timestamp           08/07/2026 01:08:22 PM
-      Step Count                        550  Switch Count  0
+      memory              100.12k
+      OS Memory           94296.00k
+      Timestamp           08/07/2026 01:54:14 PM
+      Step Count                        1293  Switch Count  0
       Page Faults                       0
       Page Reclaims                     8
       Page Swaps                        0
-      Voluntary Context Switches        2
+      Voluntary Context Switches        3
       Involuntary Context Switches      0
       Block Input Operations            0
       Block Output Operations           0
@@ -18,19 +18,19 @@ NOTE: PROCEDURE PRINTTO used (Total process time):
  
 ORACLE_1: Prepared: on connection 0
 select count(*) as table_count from user_tables where table_name = 'COUNTRIES_POP_GDP'
- 
- 
-7                                                          The SAS System                        Friday, August  7, 2026 06:08:22 AM
+7                                                          The SAS System                        Friday, August  7, 2026 06:54:14 AM
 
+ 
+ 
 ORACLE_2: Executed: on connection 0
 SELECT statement  ORACLE_1
  
  
 Summary Statistics for ORACLE are:
-Total row fetch seconds were:                       0.000561
-Total SQL execution seconds were:                   0.001129
-Total SQL prepare seconds were:                     0.042282
-Total seconds used by the ORACLE ACCESS engine were     0.045279
+Total row fetch seconds were:                       0.000564
+Total SQL execution seconds were:                   0.000958
+Total SQL prepare seconds were:                     0.000361
+Total seconds used by the ORACLE ACCESS engine were     0.003011
  
  
 ORACLE_3: Prepared: on connection 0
@@ -42,10 +42,10 @@ SELECT statement  ORACLE_3
  
  
 Summary Statistics for ORACLE are:
-Total row fetch seconds were:                       0.000624
-Total SQL execution seconds were:                   0.001054
-Total SQL prepare seconds were:                     0.023725
-Total seconds used by the ORACLE ACCESS engine were     0.026487
+Total row fetch seconds were:                       0.000432
+Total SQL execution seconds were:                   0.000466
+Total SQL prepare seconds were:                     0.000280
+Total seconds used by the ORACLE ACCESS engine were     0.002018
  
  
 ORACLE_5: Prepared: on connection 0
@@ -57,10 +57,10 @@ SELECT statement  ORACLE_5
  
  
 Summary Statistics for ORACLE are:
-Total row fetch seconds were:                       0.000607
-Total SQL execution seconds were:                   0.000889
-Total SQL prepare seconds were:                     0.020917
-Total seconds used by the ORACLE ACCESS engine were     0.023562
+Total row fetch seconds were:                       0.000428
+Total SQL execution seconds were:                   0.000383
+Total SQL prepare seconds were:                     0.000235
+Total seconds used by the ORACLE ACCESS engine were     0.001743
  
  
 ORACLE_7: Prepared: on connection 0
@@ -72,21 +72,21 @@ SELECT statement  ORACLE_7
  
  
 Summary Statistics for ORACLE are:
-Total row fetch seconds were:                       0.000896
-Total SQL execution seconds were:                   0.001098
-Total SQL prepare seconds were:                     0.022047
-Total seconds used by the ORACLE ACCESS engine were     0.025032
+Total row fetch seconds were:                       0.000549
+Total SQL execution seconds were:                   0.000438
+Total SQL prepare seconds were:                     0.000242
+Total seconds used by the ORACLE ACCESS engine were     0.001994
  
  
+8                                                          The SAS System                        Friday, August  7, 2026 06:54:14 AM
+
 ORACLE_9: Executed: on connection 0
 drop table countries_pop_gdp
-8                                                          The SAS System                        Friday, August  7, 2026 06:08:22 AM
-
  
  
 Summary Statistics for ORACLE are:
-Total SQL execution seconds were:                   0.078875
-Total seconds used by the ORACLE ACCESS engine were     0.079285
+Total SQL execution seconds were:                   0.026172
+Total seconds used by the ORACLE ACCESS engine were     0.026720
  
  
 ORACLE_10: Executed: on connection 0
@@ -94,8 +94,8 @@ drop table country_lookup
  
  
 Summary Statistics for ORACLE are:
-Total SQL execution seconds were:                   0.019117
-Total seconds used by the ORACLE ACCESS engine were     0.019544
+Total SQL execution seconds were:                   0.018222
+Total seconds used by the ORACLE ACCESS engine were     0.018757
  
  
 ORACLE_11: Executed: on connection 0
@@ -103,8 +103,8 @@ drop table POPULATION_CHAR_BACKUP
  
  
 Summary Statistics for ORACLE are:
-Total SQL execution seconds were:                   0.022185
-Total seconds used by the ORACLE ACCESS engine were     0.022606
+Total SQL execution seconds were:                   0.038238
+Total seconds used by the ORACLE ACCESS engine were     0.038683
  
  
 ORACLE_12: Executed: on connection 0
@@ -112,22 +112,22 @@ create table population_char_backup as select country_code, country_name, to_cha
  
  
 Summary Statistics for ORACLE are:
-Total SQL execution seconds were:                   0.076359
-Total seconds used by the ORACLE ACCESS engine were     0.076704
+Total SQL execution seconds were:                   0.072361
+Total seconds used by the ORACLE ACCESS engine were     0.072804
  
 NOTE: PROCEDURE SQL used (Total process time):
-      real time           1.06 seconds
+      real time           1.03 seconds
       user cpu time       0.03 seconds
       system cpu time     0.02 seconds
-      memory              5321.03k
-      OS Memory           78204.00k
-      Timestamp           08/07/2026 01:08:23 PM
-      Step Count                        551  Switch Count  4
+      memory              5496.40k
+      OS Memory           99932.00k
+      Timestamp           08/07/2026 01:54:15 PM
+      Step Count                        1294  Switch Count  4
       Page Faults                       0
-      Page Reclaims                     202
+      Page Reclaims                     425
       Page Swaps                        0
-      Voluntary Context Switches        90
-      Involuntary Context Switches      12
+      Voluntary Context Switches        96
+      Involuntary Context Switches      1
       Block Input Operations            0
       Block Output Operations           0
       
@@ -138,15 +138,15 @@ NOTE: Libref ORALIB was successfully assigned as follows:
 
 INFO: COPY with SELECT performance is in use.
  
+9                                                          The SAS System                        Friday, August  7, 2026 06:54:15 AM
+
 ORACLE_1: Prepared: on connection 1
 SELECT * FROM COUNTRIES
-9                                                          The SAS System                        Friday, August  7, 2026 06:08:23 AM
-
  
  
 Summary Statistics for ORACLE are:
-Total SQL prepare seconds were:                     0.003570
-Total seconds used by the ORACLE ACCESS engine were     0.004031
+Total SQL prepare seconds were:                     0.000234
+Total seconds used by the ORACLE ACCESS engine were     0.000784
  
 NOTE: Copying ORALIB.COUNTRIES to WORK.COUNTRIES (memtype=DATA).
  
@@ -163,10 +163,10 @@ SELECT statement  ORACLE_2
 NOTE: There were 263 observations read from the data set ORALIB.COUNTRIES.
  
 Summary Statistics for ORACLE are:
-Total row fetch seconds were:                       0.000810
-Total SQL execution seconds were:                   0.000238
-Total SQL prepare seconds were:                     0.000314
-Total seconds used by the ORACLE ACCESS engine were     0.003096
+Total row fetch seconds were:                       0.001073
+Total SQL execution seconds were:                   0.000254
+Total SQL prepare seconds were:                     0.000345
+Total seconds used by the ORACLE ACCESS engine were     0.004077
  
 NOTE: The data set WORK.COUNTRIES has 263 observations and 8 variables.
  
@@ -175,8 +175,8 @@ SELECT * FROM POPULATION_CHAR_BACKUP
  
  
 Summary Statistics for ORACLE are:
-Total SQL prepare seconds were:                     0.006539
-Total seconds used by the ORACLE ACCESS engine were     0.006815
+Total SQL prepare seconds were:                     0.011960
+Total seconds used by the ORACLE ACCESS engine were     0.012259
  
 NOTE: Copying ORALIB.POPULATION_CHAR_BACKUP to WORK.POPULATION_CHAR_BACKUP (memtype=DATA).
  
@@ -193,22 +193,22 @@ SELECT statement  ORACLE_5
 NOTE: There were 16758 observations read from the data set ORALIB.POPULATION_CHAR_BACKUP.
  
 Summary Statistics for ORACLE are:
-Total row fetch seconds were:                       0.006948
-Total SQL execution seconds were:                   0.000756
-Total SQL prepare seconds were:                     0.000297
-Total seconds used by the ORACLE ACCESS engine were     0.011931
+Total row fetch seconds were:                       0.006536
+Total SQL execution seconds were:                   0.000701
+Total SQL prepare seconds were:                     0.000373
+Total seconds used by the ORACLE ACCESS engine were     0.011829
  
+10                                                         The SAS System                        Friday, August  7, 2026 06:54:15 AM
+
 NOTE: The data set WORK.POPULATION_CHAR_BACKUP has 16758 observations and 4 variables.
  
-10                                                         The SAS System                        Friday, August  7, 2026 06:08:23 AM
-
 ORACLE_7: Prepared: on connection 1
 SELECT * FROM POP_GROWTH
  
  
 Summary Statistics for ORACLE are:
-Total SQL prepare seconds were:                     0.002476
-Total seconds used by the ORACLE ACCESS engine were     0.002820
+Total SQL prepare seconds were:                     0.000279
+Total seconds used by the ORACLE ACCESS engine were     0.000611
  
 NOTE: Copying ORALIB.POP_GROWTH to WORK.POP_GROWTH (memtype=DATA).
  
@@ -225,10 +225,10 @@ SELECT statement  ORACLE_8
 NOTE: There were 16492 observations read from the data set ORALIB.POP_GROWTH.
  
 Summary Statistics for ORACLE are:
-Total row fetch seconds were:                       0.007407
-Total SQL execution seconds were:                   0.000227
-Total SQL prepare seconds were:                     0.000267
-Total seconds used by the ORACLE ACCESS engine were     0.011520
+Total row fetch seconds were:                       0.007340
+Total SQL execution seconds were:                   0.000277
+Total SQL prepare seconds were:                     0.000316
+Total seconds used by the ORACLE ACCESS engine were     0.013071
  
 NOTE: The data set WORK.POP_GROWTH has 16492 observations and 6 variables.
  
@@ -237,8 +237,8 @@ SELECT * FROM GDP_WIDE
  
  
 Summary Statistics for ORACLE are:
-Total SQL prepare seconds were:                     0.004617
-Total seconds used by the ORACLE ACCESS engine were     0.004894
+Total SQL prepare seconds were:                     0.000435
+Total seconds used by the ORACLE ACCESS engine were     0.000730
  
 NOTE: Copying ORALIB.GDP_WIDE to WORK.GDP_WIDE (memtype=DATA).
  
@@ -255,13 +255,13 @@ SELECT statement  ORACLE_11
 NOTE: There were 266 observations read from the data set ORALIB.GDP_WIDE.
  
 Summary Statistics for ORACLE are:
-Total row fetch seconds were:                       0.002066
-Total SQL execution seconds were:                   0.000321
-Total SQL prepare seconds were:                     0.000351
-Total seconds used by the ORACLE ACCESS engine were     0.004978
- 
-11                                                         The SAS System                        Friday, August  7, 2026 06:08:23 AM
+Total row fetch seconds were:                       0.002152
+Total SQL execution seconds were:                   0.000541
+Total SQL prepare seconds were:                     0.000392
+11                                                         The SAS System                        Friday, August  7, 2026 06:54:15 AM
 
+Total seconds used by the ORACLE ACCESS engine were     0.006040
+ 
 NOTE: The data set WORK.GDP_WIDE has 266 observations and 67 variables.
  
 ORACLE_13: Prepared: on connection 1
@@ -269,8 +269,8 @@ SELECT * FROM REGIONS
  
  
 Summary Statistics for ORACLE are:
-Total SQL prepare seconds were:                     0.001539
-Total seconds used by the ORACLE ACCESS engine were     0.001747
+Total SQL prepare seconds were:                     0.000292
+Total seconds used by the ORACLE ACCESS engine were     0.000537
  
 NOTE: Copying ORALIB.REGIONS to WORK.REGIONS (memtype=DATA).
  
@@ -287,25 +287,25 @@ SELECT statement  ORACLE_14
 NOTE: There were 247 observations read from the data set ORALIB.REGIONS.
  
 Summary Statistics for ORACLE are:
-Total row fetch seconds were:                       0.000758
-Total SQL execution seconds were:                   0.000239
-Total SQL prepare seconds were:                     0.000312
-Total seconds used by the ORACLE ACCESS engine were     0.002660
+Total row fetch seconds were:                       0.000661
+Total SQL execution seconds were:                   0.000261
+Total SQL prepare seconds were:                     0.000285
+Total seconds used by the ORACLE ACCESS engine were     0.002861
  
 NOTE: The data set WORK.REGIONS has 247 observations and 2 variables.
 NOTE: PROCEDURE COPY used (Total process time):
       real time           0.09 seconds
-      user cpu time       0.04 seconds
-      system cpu time     0.01 seconds
-      memory              2483.03k
-      OS Memory           74968.00k
-      Timestamp           08/07/2026 01:08:23 PM
-      Step Count                        552  Switch Count  39
+      user cpu time       0.03 seconds
+      system cpu time     0.02 seconds
+      memory              2501.46k
+      OS Memory           96696.00k
+      Timestamp           08/07/2026 01:54:15 PM
+      Step Count                        1295  Switch Count  39
       Page Faults                       0
-      Page Reclaims                     987
+      Page Reclaims                     1110
       Page Swaps                        0
-      Voluntary Context Switches        267
-      Involuntary Context Switches      0
+      Voluntary Context Switches        256
+      Involuntary Context Switches      21
       Block Input Operations            0
       Block Output Operations           7856
       
@@ -317,14 +317,14 @@ NOTE: PROCEDURE DATASETS used (Total process time):
       real time           0.00 seconds
       user cpu time       0.00 seconds
       system cpu time     0.00 seconds
-      memory              432.28k
-      OS Memory           73080.00k
-      Timestamp           08/07/2026 01:08:23 PM
-12                                                         The SAS System                        Friday, August  7, 2026 06:08:23 AM
+      memory              450.96k
+12                                                         The SAS System                        Friday, August  7, 2026 06:54:15 AM
 
-      Step Count                        553  Switch Count  0
+      OS Memory           94808.00k
+      Timestamp           08/07/2026 01:54:15 PM
+      Step Count                        1296  Switch Count  0
       Page Faults                       0
-      Page Reclaims                     8
+      Page Reclaims                     14
       Page Swaps                        0
       Voluntary Context Switches        0
       Involuntary Context Switches      0
@@ -342,15 +342,15 @@ NOTE: PROCEDURE SORT used (Total process time):
       real time           0.00 seconds
       user cpu time       0.01 seconds
       system cpu time     0.00 seconds
-      memory              2156.37k
-      OS Memory           73596.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        554  Switch Count  0
+      memory              2177.00k
+      OS Memory           95068.00k
+      Timestamp           08/07/2026 01:54:16 PM
+      Step Count                        1297  Switch Count  0
       Page Faults                       0
-      Page Reclaims                     39
+      Page Reclaims                     53
       Page Swaps                        0
-      Voluntary Context Switches        1
-      Involuntary Context Switches      0
+      Voluntary Context Switches        0
+      Involuntary Context Switches      1
       Block Input Operations            0
       Block Output Operations           784
       
@@ -364,37 +364,37 @@ NOTE: PROCEDURE SORT used (Total process time):
       real time           0.00 seconds
       user cpu time       0.00 seconds
       system cpu time     0.00 seconds
-      memory              2180.87k
-      OS Memory           73596.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        555  Switch Count  0
+      memory              2202.25k
+      OS Memory           95068.00k
+      Timestamp           08/07/2026 01:54:16 PM
+      Step Count                        1298  Switch Count  0
       Page Faults                       0
-      Page Reclaims                     21
+      Page Reclaims                     34
       Page Swaps                        0
       Voluntary Context Switches        0
-      Involuntary Context Switches      0
+      Involuntary Context Switches      12
       Block Input Operations            0
       Block Output Operations           784
       
 
 NOTE: SAS threaded sort was used.
-NOTE: Table WORK.POPULATION_INDICATORS created, with 3192 rows and 5 columns.
+13                                                         The SAS System                        Friday, August  7, 2026 06:54:16 AM
 
-13                                                         The SAS System                        Friday, August  7, 2026 06:08:24 AM
+NOTE: Table WORK.POPULATION_INDICATORS created, with 3192 rows and 5 columns.
 
 NOTE: PROCEDURE SQL used (Total process time):
       real time           0.01 seconds
       user cpu time       0.01 seconds
       system cpu time     0.01 seconds
-      memory              15576.78k
-      OS Memory           88224.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        556  Switch Count  0
+      memory              15769.92k
+      OS Memory           107940.00k
+      Timestamp           08/07/2026 01:54:16 PM
+      Step Count                        1299  Switch Count  0
       Page Faults                       0
-      Page Reclaims                     685
+      Page Reclaims                     790
       Page Swaps                        0
-      Voluntary Context Switches        32
-      Involuntary Context Switches      0
+      Voluntary Context Switches        33
+      Involuntary Context Switches      2
       Block Input Operations            0
       Block Output Operations           1424
       
@@ -406,14 +406,14 @@ NOTE: 0 observations with duplicate key values were deleted.
 NOTE: The data set WORK.COUNTRIES_SORTED has 263 observations and 8 variables.
 NOTE: PROCEDURE SORT used (Total process time):
       real time           0.00 seconds
-      user cpu time       0.00 seconds
+      user cpu time       0.01 seconds
       system cpu time     0.00 seconds
-      memory              876.78k
-      OS Memory           72532.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        557  Switch Count  0
+      memory              896.96k
+      OS Memory           94808.00k
+      Timestamp           08/07/2026 01:54:16 PM
+      Step Count                        1300  Switch Count  0
       Page Faults                       0
-      Page Reclaims                     9
+      Page Reclaims                     22
       Page Swaps                        0
       Voluntary Context Switches        0
       Involuntary Context Switches      0
@@ -427,21 +427,21 @@ NOTE: There were 3192 observations read from the data set WORK.POPULATION_INDICA
 NOTE: The data set WORK.COUNTRIES_POP_INDICATORS has 3192 observations and 12 variables.
 NOTE: DATA statement used (Total process time):
       real time           0.00 seconds
-      user cpu time       0.01 seconds
+      user cpu time       0.00 seconds
       system cpu time     0.00 seconds
-      memory              943.28k
-      OS Memory           72532.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        558  Switch Count  0
+      memory              957.53k
+      OS Memory           95064.00k
+      Timestamp           08/07/2026 01:54:16 PM
+      Step Count                        1301  Switch Count  0
       Page Faults                       0
-      Page Reclaims                     9
+      Page Reclaims                     58
       Page Swaps                        0
       Voluntary Context Switches        0
       Involuntary Context Switches      0
+14                                                         The SAS System                        Friday, August  7, 2026 06:54:16 AM
+
       Block Input Operations            0
       Block Output Operations           1928
-14                                                         The SAS System                        Friday, August  7, 2026 06:08:24 AM
-
       
 
 
@@ -451,15 +451,15 @@ NOTE: PROCEDURE TRANSPOSE used (Total process time):
       real time           0.00 seconds
       user cpu time       0.00 seconds
       system cpu time     0.00 seconds
-      memory              2657.03k
-      OS Memory           74584.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        559  Switch Count  1
+      memory              2675.12k
+      OS Memory           96860.00k
+      Timestamp           08/07/2026 01:54:16 PM
+      Step Count                        1302  Switch Count  1
       Page Faults                       0
-      Page Reclaims                     11
+      Page Reclaims                     35
       Page Swaps                        0
       Voluntary Context Switches        2
-      Involuntary Context Switches      0
+      Involuntary Context Switches      2
       Block Input Operations            0
       Block Output Operations           4624
       
@@ -469,17 +469,17 @@ NOTE: There were 16758 observations read from the data set WORK.GDP_TRANSPOSE.
 NOTE: The data set WORK.GDP has 3192 observations and 6 variables.
 NOTE: DATA statement used (Total process time):
       real time           0.00 seconds
-      user cpu time       0.00 seconds
+      user cpu time       0.01 seconds
       system cpu time     0.00 seconds
-      memory              682.75k
-      OS Memory           72276.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        560  Switch Count  0
+      memory              698.06k
+      OS Memory           95064.00k
+      Timestamp           08/07/2026 01:54:16 PM
+      Step Count                        1303  Switch Count  0
       Page Faults                       0
-      Page Reclaims                     9
+      Page Reclaims                     55
       Page Swaps                        0
       Voluntary Context Switches        0
-      Involuntary Context Switches      1
+      Involuntary Context Switches      0
       Block Input Operations            0
       Block Output Operations           648
       
@@ -492,16 +492,16 @@ NOTE: PROCEDURE SORT used (Total process time):
       real time           0.00 seconds
       user cpu time       0.00 seconds
       system cpu time     0.00 seconds
-      memory              3104.21k
-      OS Memory           73820.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        561  Switch Count  0
+      memory              3124.68k
+      OS Memory           96352.00k
+      Timestamp           08/07/2026 01:54:16 PM
+      Step Count                        1304  Switch Count  0
       Page Faults                       0
-      Page Reclaims                     172
+      Page Reclaims                     185
+15                                                         The SAS System                        Friday, August  7, 2026 06:54:16 AM
+
       Page Swaps                        0
       Voluntary Context Switches        0
-15                                                         The SAS System                        Friday, August  7, 2026 06:08:24 AM
-
       Involuntary Context Switches      0
       Block Input Operations            0
       Block Output Operations           1936
@@ -513,17 +513,17 @@ NOTE: SAS sort was used.
 NOTE: The data set WORK.GDP_SORTED has 3192 observations and 6 variables.
 NOTE: PROCEDURE SORT used (Total process time):
       real time           0.00 seconds
-      user cpu time       0.00 seconds
+      user cpu time       0.01 seconds
       system cpu time     0.00 seconds
-      memory              1512.56k
-      OS Memory           72276.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        562  Switch Count  0
+      memory              1533.03k
+      OS Memory           94808.00k
+      Timestamp           08/07/2026 01:54:16 PM
+      Step Count                        1305  Switch Count  0
       Page Faults                       0
-      Page Reclaims                     9
+      Page Reclaims                     22
       Page Swaps                        0
       Voluntary Context Switches        0
-      Involuntary Context Switches      0
+      Involuntary Context Switches      2
       Block Input Operations            0
       Block Output Operations           656
       
@@ -536,13 +536,13 @@ NOTE: The data set WORK.COUNTRIES_POP_GDP_PARTIAL has 3192 observations and 15 v
 NOTE: DATA statement used (Total process time):
       real time           0.00 seconds
       user cpu time       0.00 seconds
-      system cpu time     0.01 seconds
-      memory              971.34k
-      OS Memory           72276.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        563  Switch Count  0
+      system cpu time     0.00 seconds
+      memory              989.31k
+      OS Memory           95064.00k
+      Timestamp           08/07/2026 01:54:16 PM
+      Step Count                        1306  Switch Count  0
       Page Faults                       0
-      Page Reclaims                     9
+      Page Reclaims                     66
       Page Swaps                        0
       Voluntary Context Switches        0
       Involuntary Context Switches      0
@@ -555,20 +555,20 @@ NOTE: SAS threaded sort was used.
 NOTE: Table WORK.COUNTRIES_POP_GDP created, with 3192 rows and 16 columns.
 
 NOTE: PROCEDURE SQL used (Total process time):
-      real time           0.00 seconds
+      real time           0.01 seconds
       user cpu time       0.01 seconds
-      system cpu time     0.00 seconds
-      memory              19172.39k
-      OS Memory           91260.00k
-16                                                         The SAS System                        Friday, August  7, 2026 06:08:24 AM
+      system cpu time     0.01 seconds
+16                                                         The SAS System                        Friday, August  7, 2026 06:54:16 AM
 
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        564  Switch Count  0
+      memory              19287.54k
+      OS Memory           112256.00k
+      Timestamp           08/07/2026 01:54:16 PM
+      Step Count                        1307  Switch Count  0
       Page Faults                       0
-      Page Reclaims                     488
+      Page Reclaims                     586
       Page Swaps                        0
-      Voluntary Context Switches        52
-      Involuntary Context Switches      1
+      Voluntary Context Switches        53
+      Involuntary Context Switches      4
       Block Input Operations            0
       Block Output Operations           4496
       
@@ -578,17 +578,17 @@ NOTE: Table WORK.SAME_CODES created, with 2556 rows and 4 columns.
 
 NOTE: PROCEDURE SQL used (Total process time):
       real time           0.00 seconds
-      user cpu time       0.01 seconds
+      user cpu time       0.00 seconds
       system cpu time     0.00 seconds
-      memory              11141.07k
-      OS Memory           82556.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        565  Switch Count  0
+      memory              11256.17k
+      OS Memory           103552.00k
+      Timestamp           08/07/2026 01:54:16 PM
+      Step Count                        1308  Switch Count  0
       Page Faults                       0
-      Page Reclaims                     320
+      Page Reclaims                     411
       Page Swaps                        0
-      Voluntary Context Switches        16
-      Involuntary Context Switches      0
+      Voluntary Context Switches        17
+      Involuntary Context Switches      4
       Block Input Operations            0
       Block Output Operations           656
       
@@ -598,16 +598,16 @@ NOTE: Table WORK.SAME_NAMES created, with 2196 rows and 4 columns.
 
 NOTE: PROCEDURE SQL used (Total process time):
       real time           0.00 seconds
-      user cpu time       0.00 seconds
+      user cpu time       0.01 seconds
       system cpu time     0.00 seconds
-      memory              6545.35k
-      OS Memory           78056.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        566  Switch Count  0
+      memory              6622.79k
+      OS Memory           99676.00k
+      Timestamp           08/07/2026 01:54:16 PM
+      Step Count                        1309  Switch Count  0
       Page Faults                       0
-      Page Reclaims                     340
+      Page Reclaims                     427
       Page Swaps                        0
-      Voluntary Context Switches        19
+      Voluntary Context Switches        18
       Involuntary Context Switches      1
       Block Input Operations            0
       Block Output Operations           528
@@ -618,17 +618,17 @@ NOTE: There were 2556 observations read from the data set WORK.SAME_CODES.
 NOTE: There were 2196 observations read from the data set WORK.SAME_NAMES.
 NOTE: The data set WORK.COUNTRY_WITH_DUPS has 4752 observations and 4 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.00 seconds
-      user cpu time       0.01 seconds
-17                                                         The SAS System                        Friday, August  7, 2026 06:08:24 AM
+17                                                         The SAS System                        Friday, August  7, 2026 06:54:16 AM
 
+      real time           0.00 seconds
+      user cpu time       0.00 seconds
       system cpu time     0.00 seconds
-      memory              801.75k
-      OS Memory           72276.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        567  Switch Count  0
+      memory              820.84k
+      OS Memory           95064.00k
+      Timestamp           08/07/2026 01:54:16 PM
+      Step Count                        1310  Switch Count  0
       Page Faults                       0
-      Page Reclaims                     8
+      Page Reclaims                     42
       Page Swaps                        0
       Voluntary Context Switches        0
       Involuntary Context Switches      0
@@ -645,15 +645,15 @@ NOTE: PROCEDURE SORT used (Total process time):
       real time           0.00 seconds
       user cpu time       0.00 seconds
       system cpu time     0.00 seconds
-      memory              3129.84k
-      OS Memory           73820.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        568  Switch Count  0
+      memory              3149.21k
+      OS Memory           96352.00k
+      Timestamp           08/07/2026 01:54:16 PM
+      Step Count                        1311  Switch Count  0
       Page Faults                       0
-      Page Reclaims                     166
+      Page Reclaims                     180
       Page Swaps                        0
       Voluntary Context Switches        0
-      Involuntary Context Switches      0
+      Involuntary Context Switches      1
       Block Input Operations            0
       Block Output Operations           144
       
@@ -676,57 +676,57 @@ File Size (bytes)  4096
                                                            Member
                        #  Name                             Type         File Size  Last Modified
 
-                       1  COUNTRIES                        DATA             128KB  08/07/2026 13:08:23        
-                       2  COUNTRIES_POP_GDP                DATA               1MB  08/07/2026 13:08:24        
-                       3  COUNTRIES_POP_GDP_PARTIAL        DATA               1MB  08/07/2026 13:08:24        
-                       4  COUNTRIES_POP_INDICATORS         DATA               1MB  08/07/2026 13:08:24        
-18                                                         The SAS System                        Friday, August  7, 2026 06:08:24 AM
+                       1  COUNTRIES                        DATA             128KB  08/07/2026 13:54:15        
+                       2  COUNTRIES_POP_GDP                DATA               1MB  08/07/2026 13:54:16        
+18                                                         The SAS System                        Friday, August  7, 2026 06:54:16 AM
 
                                                            Member
                        #  Name                             Type         File Size  Last Modified
 
-                       5  COUNTRIES_POP_INDICATORS_SORTED  DATA               1MB  08/07/2026 13:08:24        
-                       6  COUNTRIES_SORTED                 DATA             128KB  08/07/2026 13:08:24        
-                       7  COUNTRY_LOOKUP                   DATA             128KB  08/07/2026 13:08:24        
-                       8  COUNTRY_WITH_DUPS                DATA             576KB  08/07/2026 13:08:24        
-                       9  EXECUTION_TIMES                  DATA             128KB  08/07/2026 13:08:22        
-                      10  GDP                              DATA             384KB  08/07/2026 13:08:24        
-                      11  GDP_SORTED                       DATA             384KB  08/07/2026 13:08:24        
-                      12  GDP_TRANSPOSE                    DATA               2MB  08/07/2026 13:08:24        
-                      13  GDP_WIDE                         DATA             256KB  08/07/2026 13:08:23        
-                      14  NEW_COUNTRIES_POP_GDP            DATA               1MB  08/07/2026 13:07:36        
-                      15  NEW_COUNTRY_LOOKUP               DATA             128KB  08/07/2026 13:07:36        
-                      16  ORIG_COUNTRIES_POP_GDP           DATA               1MB  08/07/2026 13:07:36        
-                      17  ORIG_COUNTRY_LOOKUP              DATA             128KB  08/07/2026 13:07:35        
-                      18  POPULATION                       DATA               2MB  08/07/2026 13:08:23        
-                      19  POPULATION_INDICATORS            DATA             320KB  08/07/2026 13:08:24        
-                      20  POPULATION_SORTED                DATA             448KB  08/07/2026 13:08:24        
-                      21  POP_GROWTH                       DATA               2MB  08/07/2026 13:08:23        
-                      22  POP_GROWTH_SORTED                DATA             448KB  08/07/2026 13:08:24        
+                       3  COUNTRIES_POP_GDP_PARTIAL        DATA               1MB  08/07/2026 13:54:16        
+                       4  COUNTRIES_POP_INDICATORS         DATA               1MB  08/07/2026 13:54:16        
+                       5  COUNTRIES_POP_INDICATORS_SORTED  DATA               1MB  08/07/2026 13:54:16        
+                       6  COUNTRIES_SORTED                 DATA             128KB  08/07/2026 13:54:16        
+                       7  COUNTRY_LOOKUP                   DATA             128KB  08/07/2026 13:54:16        
+                       8  COUNTRY_WITH_DUPS                DATA             576KB  08/07/2026 13:54:16        
+                       9  EXECUTION_TIMES                  DATA             128KB  08/07/2026 13:54:14        
+                      10  GDP                              DATA             384KB  08/07/2026 13:54:16        
+                      11  GDP_SORTED                       DATA             384KB  08/07/2026 13:54:16        
+                      12  GDP_TRANSPOSE                    DATA               2MB  08/07/2026 13:54:16        
+                      13  GDP_WIDE                         DATA             256KB  08/07/2026 13:54:15        
+                      14  NEW_COUNTRIES_POP_GDP            DATA               1MB  08/07/2026 13:52:59        
+                      15  NEW_COUNTRY_LOOKUP               DATA             128KB  08/07/2026 13:52:59        
+                      16  ORIG_COUNTRIES_POP_GDP           DATA               1MB  08/07/2026 13:52:59        
+                      17  ORIG_COUNTRY_LOOKUP              DATA             128KB  08/07/2026 13:52:58        
+                      18  POPULATION                       DATA               2MB  08/07/2026 13:54:15        
+                      19  POPULATION_INDICATORS            DATA             320KB  08/07/2026 13:54:16        
+                      20  POPULATION_SORTED                DATA             448KB  08/07/2026 13:54:16        
+                      21  POP_GROWTH                       DATA               2MB  08/07/2026 13:54:15        
+                      22  POP_GROWTH_SORTED                DATA             448KB  08/07/2026 13:54:16        
                       23  PROFILE                          CATALOG           12KB  08/07/2026 11:56:53        
-                      24  REGIONS                          DATA             128KB  08/07/2026 13:08:23        
+                      24  REGIONS                          DATA             128KB  08/07/2026 13:54:15        
                       25  REGSTRY                          ITEMSTOR          32KB  08/07/2026 11:56:53        
-                      26  SAME_CODES                       DATA             384KB  08/07/2026 13:08:24        
-                      27  SAME_NAMES                       DATA             320KB  08/07/2026 13:08:24        
+                      26  SAME_CODES                       DATA             384KB  08/07/2026 13:54:16        
+                      27  SAME_NAMES                       DATA             320KB  08/07/2026 13:54:16        
                       28  SASGOPT                          CATALOG           12KB  08/07/2026 12:23:27        
-                      29  SASMAC3                          CATALOG           20KB  08/07/2026 13:08:22        
-                      30  SASMACR                          CATALOG          168KB  08/07/2026 13:07:37        
+                      29  SASMAC3                          CATALOG           20KB  08/07/2026 13:54:14        
+                      30  SASMACR                          CATALOG          168KB  08/07/2026 13:53:00        
 NOTE: MODIFY was successful for WORK.COUNTRIES_POP_GDP.DATA.
 
 NOTE: MODIFY was successful for WORK.COUNTRY_LOOKUP.DATA.
 NOTE: PROCEDURE DATASETS used (Total process time):
       real time           0.03 seconds
       user cpu time       0.03 seconds
-      system cpu time     0.01 seconds
-      memory              1370.87k
-      OS Memory           72276.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        569  Switch Count  0
+      system cpu time     0.00 seconds
+      memory              1480.62k
+      OS Memory           95064.00k
+      Timestamp           08/07/2026 01:54:16 PM
+      Step Count                        1312  Switch Count  0
       Page Faults                       0
-      Page Reclaims                     46
+      Page Reclaims                     218
       Page Swaps                        0
       Voluntary Context Switches        0
-      Involuntary Context Switches      0
+      Involuntary Context Switches      7
       Block Input Operations            0
       Block Output Operations           24
       
@@ -738,10 +738,10 @@ SCHEMA used:  STUDENT
  
 ORACLE_1: Prepared: on connection 1
 SELECT OBJECT_NAME ,OBJECT_TYPE  FROM  USER_OBJECTS  OBJ WHERE (OBJ.OBJECT_TYPE  IN  ('TABLE','VIEW'))
- 
- 
-19                                                         The SAS System                        Friday, August  7, 2026 06:08:24 AM
+19                                                         The SAS System                        Friday, August  7, 2026 06:54:16 AM
 
+ 
+ 
 ORACLE_2: Executed: on connection 1
 SELECT statement  ORACLE_1
  
@@ -777,30 +777,30 @@ SELECT statement  ORACLE_1
 
  
 Summary Statistics for ORACLE are:
-Total row fetch seconds were:                       0.001855
-Total SQL execution seconds were:                   0.009289
-Total SQL prepare seconds were:                     0.019490
-Total seconds used by the ORACLE ACCESS engine were     0.047418
+Total row fetch seconds were:                       0.000977
+Total SQL execution seconds were:                   0.011384
+Total SQL prepare seconds were:                     0.015450
+Total seconds used by the ORACLE ACCESS engine were     0.047925
  
 NOTE: PROCEDURE DATASETS used (Total process time):
       real time           0.08 seconds
-      user cpu time       0.02 seconds
-      system cpu time     0.00 seconds
-      memory              1317.56k
-      OS Memory           72792.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        570  Switch Count  2
+      user cpu time       0.03 seconds
+      system cpu time     0.01 seconds
+      memory              1311.87k
+      OS Memory           95836.00k
+      Timestamp           08/07/2026 01:54:16 PM
+      Step Count                        1313  Switch Count  2
       Page Faults                       0
-      Page Reclaims                     77
+      Page Reclaims                     234
       Page Swaps                        0
-      Voluntary Context Switches        47
-      Involuntary Context Switches      0
+      Voluntary Context Switches        46
+      Involuntary Context Switches      2
       Block Input Operations            0
       Block Output Operations           32
       
+20                                                         The SAS System                        Friday, August  7, 2026 06:54:16 AM
 
 
-20                                                         The SAS System                        Friday, August  7, 2026 06:08:24 AM
 
 INFO: COPY with SELECT performance is in use.
 NOTE: Copying WORK.COUNTRIES_POP_GDP to ORALIB.COUNTRIES_POP_GDP (memtype=DATA).
@@ -810,8 +810,8 @@ SELECT * FROM COUNTRIES_POP_GDP
  
  
 Summary Statistics for ORACLE are:
-Total SQL prepare seconds were:                     0.000920
-Total seconds used by the ORACLE ACCESS engine were     0.001438
+Total SQL prepare seconds were:                     0.000985
+Total seconds used by the ORACLE ACCESS engine were     0.001481
  
 NOTE: SAS variable labels, formats, and lengths are not written to DBMS tables.
 INFO: Data set block I/O cannot be used because:
@@ -858,10 +858,10 @@ ORACLE_11: Executed: on connection 2
 INSERT statement  ORACLE_5
  
 ORACLE:  *-*-*-*-*-*-* COMMIT *-*-*-*-*-*-*
+21                                                         The SAS System                        Friday, August  7, 2026 06:54:17 AM
+
 NOTE: There were 3192 observations read from the data set WORK.COUNTRIES_POP_GDP.
  
-21                                                         The SAS System                        Friday, August  7, 2026 06:08:24 AM
-
 ORACLE_12: Executed: on connection 2
 INSERT statement  ORACLE_5
  
@@ -871,10 +871,10 @@ ORACLE:  *-*-*-*-*-*-* COMMIT *-*-*-*-*-*-*
 ORACLE:  *-*-*-*-*-*-* COMMIT *-*-*-*-*-*-*
  
 Summary Statistics for ORACLE are:
-Total SQL execution seconds were:                   0.021073
-Total SQL prepare seconds were:                     0.000955
-Total SQL row insert seconds were:                  0.061517
-Total seconds used by the ORACLE ACCESS engine were     0.103777
+Total SQL execution seconds were:                   0.012877
+Total SQL prepare seconds were:                     0.001021
+Total SQL row insert seconds were:                  0.119369
+Total seconds used by the ORACLE ACCESS engine were     0.155094
  
 NOTE: Copying WORK.COUNTRY_LOOKUP to ORALIB.COUNTRY_LOOKUP (memtype=DATA).
  
@@ -883,8 +883,8 @@ SELECT * FROM COUNTRY_LOOKUP
  
  
 Summary Statistics for ORACLE are:
-Total SQL prepare seconds were:                     0.000814
-Total seconds used by the ORACLE ACCESS engine were     0.001093
+Total SQL prepare seconds were:                     0.001165
+Total seconds used by the ORACLE ACCESS engine were     0.001506
  
 NOTE: SAS variable labels, formats, and lengths are not written to DBMS tables.
 INFO: Data set block I/O cannot be used because:
@@ -909,28 +909,28 @@ ORACLE:  *-*-*-*-*-*-* COMMIT *-*-*-*-*-*-*
 ORACLE:  *-*-*-*-*-*-* COMMIT *-*-*-*-*-*-*
  
 Summary Statistics for ORACLE are:
-Total SQL execution seconds were:                   0.008803
-Total SQL prepare seconds were:                     0.000834
-Total SQL row insert seconds were:                  0.009043
-Total seconds used by the ORACLE ACCESS engine were     0.023546
+Total SQL execution seconds were:                   0.010216
+Total SQL prepare seconds were:                     0.001188
+Total SQL row insert seconds were:                  0.008674
+Total seconds used by the ORACLE ACCESS engine were     0.026676
  
 NOTE: PROCEDURE COPY used (Total process time):
-      real time           0.20 seconds
-      user cpu time       0.02 seconds
+      real time           0.26 seconds
+      user cpu time       0.03 seconds
       system cpu time     0.01 seconds
-      memory              960.50k
-      OS Memory           72532.00k
-22                                                         The SAS System                        Friday, August  7, 2026 06:08:24 AM
+22                                                         The SAS System                        Friday, August  7, 2026 06:54:17 AM
 
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        571  Switch Count  0
+      memory              985.56k
+      OS Memory           95576.00k
+      Timestamp           08/07/2026 01:54:17 PM
+      Step Count                        1314  Switch Count  0
       Page Faults                       0
-      Page Reclaims                     102
+      Page Reclaims                     380
       Page Swaps                        0
-      Voluntary Context Switches        99
-      Involuntary Context Switches      0
+      Voluntary Context Switches        98
+      Involuntary Context Switches      23
       Block Input Operations            0
-      Block Output Operations           8
+      Block Output Operations           16
       
 
  
@@ -940,26 +940,26 @@ SELECT * FROM COUNTRIES_POP_GDP
 
  
 Summary Statistics for ORACLE are:
-Total SQL prepare seconds were:                     0.011213
-Total seconds used by the ORACLE ACCESS engine were     0.035238
+Total SQL prepare seconds were:                     0.013832
+Total seconds used by the ORACLE ACCESS engine were     0.045881
  
 NOTE: PROCEDURE CONTENTS used (Total process time):
-      real time           0.03 seconds
+      real time           0.04 seconds
       user cpu time       0.03 seconds
       system cpu time     0.00 seconds
-      memory              715.87k
-      OS Memory           72276.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        572  Switch Count  0
+      memory              738.56k
+      OS Memory           95064.00k
+      Timestamp           08/07/2026 01:54:17 PM
+      Step Count                        1315  Switch Count  0
       Page Faults                       0
-      Page Reclaims                     30
+      Page Reclaims                     55
       Page Swaps                        0
       Voluntary Context Switches        1
-      Involuntary Context Switches      0
+      Involuntary Context Switches      20
       Block Input Operations            0
-      Block Output Operations           24
+      Block Output Operations           40
       
-NOTE: The PROCEDURE CONTENTS printed page 61.
+NOTE: The PROCEDURE CONTENTS printed page 197.
 
  
 ORACLE_18: Prepared: on connection 0
@@ -968,28 +968,28 @@ SELECT * FROM COUNTRY_LOOKUP
 
  
 Summary Statistics for ORACLE are:
-Total SQL prepare seconds were:                     0.008212
-Total seconds used by the ORACLE ACCESS engine were     0.025749
+Total SQL prepare seconds were:                     0.008197
+Total seconds used by the ORACLE ACCESS engine were     0.032966
  
 NOTE: PROCEDURE CONTENTS used (Total process time):
-      real time           0.02 seconds
-      user cpu time       0.02 seconds
+      real time           0.03 seconds
+      user cpu time       0.03 seconds
       system cpu time     0.00 seconds
-      memory              661.50k
-      OS Memory           72276.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        573  Switch Count  0
-      Page Faults                       0
-23                                                         The SAS System                        Friday, August  7, 2026 06:08:24 AM
+      memory              681.03k
+      OS Memory           95064.00k
+      Timestamp           08/07/2026 01:54:17 PM
+23                                                         The SAS System                        Friday, August  7, 2026 06:54:17 AM
 
-      Page Reclaims                     29
+      Step Count                        1316  Switch Count  0
+      Page Faults                       0
+      Page Reclaims                     51
       Page Swaps                        0
-      Voluntary Context Switches        2
+      Voluntary Context Switches        1
       Involuntary Context Switches      0
       Block Input Operations            0
       Block Output Operations           8
       
-NOTE: The PROCEDURE CONTENTS printed page 62.
+NOTE: The PROCEDURE CONTENTS printed page 198.
 
 NOTE: ===PIPELINE_END===
  
@@ -1004,25 +1004,25 @@ SELECT statement  ORACLE_19
 NOTE: There were 3192 observations read from the data set ORALIB.COUNTRIES_POP_GDP.
  
 Summary Statistics for ORACLE are:
-Total row fetch seconds were:                       0.005214
-Total SQL execution seconds were:                   0.000306
-Total SQL prepare seconds were:                     0.000409
-Total seconds used by the ORACLE ACCESS engine were     0.009788
+Total row fetch seconds were:                       0.003103
+Total SQL execution seconds were:                   0.000329
+Total SQL prepare seconds were:                     0.000537
+Total seconds used by the ORACLE ACCESS engine were     0.007586
  
 NOTE: The data set WORK.ORIG_COUNTRIES_POP_GDP has 3192 observations and 16 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.01 seconds
-      user cpu time       0.01 seconds
+      real time           0.00 seconds
+      user cpu time       0.00 seconds
       system cpu time     0.01 seconds
-      memory              1576.03k
-      OS Memory           73560.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        574  Switch Count  11
+      memory              1575.18k
+      OS Memory           96348.00k
+      Timestamp           08/07/2026 01:54:17 PM
+      Step Count                        1317  Switch Count  10
       Page Faults                       0
-      Page Reclaims                     269
+      Page Reclaims                     304
       Page Swaps                        0
-      Voluntary Context Switches        59
-      Involuntary Context Switches      0
+      Voluntary Context Switches        52
+      Involuntary Context Switches      1
       Block Input Operations            0
       Block Output Operations           2184
       
@@ -1038,25 +1038,25 @@ SELECT statement  ORACLE_21
  
 NOTE: There were 214 observations read from the data set ORALIB.COUNTRY_LOOKUP.
  
-Summary Statistics for ORACLE are:
-Total row fetch seconds were:                       0.000729
-24                                                         The SAS System                        Friday, August  7, 2026 06:08:24 AM
+24                                                         The SAS System                        Friday, August  7, 2026 06:54:17 AM
 
-Total SQL execution seconds were:                   0.000241
-Total SQL prepare seconds were:                     0.000339
-Total seconds used by the ORACLE ACCESS engine were     0.003191
+Summary Statistics for ORACLE are:
+Total row fetch seconds were:                       0.000597
+Total SQL execution seconds were:                   0.000237
+Total SQL prepare seconds were:                     0.000305
+Total seconds used by the ORACLE ACCESS engine were     0.003240
  
 NOTE: The data set WORK.ORIG_COUNTRY_LOOKUP has 214 observations and 4 variables.
 NOTE: DATA statement used (Total process time):
       real time           0.00 seconds
-      user cpu time       0.00 seconds
+      user cpu time       0.01 seconds
       system cpu time     0.00 seconds
-      memory              1498.15k
-      OS Memory           73560.00k
-      Timestamp           08/07/2026 01:08:24 PM
-      Step Count                        575  Switch Count  1
+      memory              1524.18k
+      OS Memory           96348.00k
+      Timestamp           08/07/2026 01:54:17 PM
+      Step Count                        1318  Switch Count  1
       Page Faults                       0
-      Page Reclaims                     107
+      Page Reclaims                     151
       Page Swaps                        0
       Voluntary Context Switches        7
       Involuntary Context Switches      0
