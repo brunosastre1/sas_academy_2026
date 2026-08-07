@@ -1,6 +1,8 @@
-# 5. Countries Data Project
+# Developer's Guide
 
-## 5.1 Project Overview
+# 1. Countries Data Project
+
+## 1.1 Project Overview
 
 The objective of the Countries Data Project was to modernize and optimize an existing SAS implementation responsible for processing World Bank Indicators data and standardized country reference information.
 
@@ -19,7 +21,7 @@ The optimization goals were:
 
 ---
 
-## 5.2 Architecture Assessment
+## 1.2 Architecture Assessment
 
 Before implementing the optimized solution, several exploratory analyses were performed to understand the existing architecture and identify optimization opportunities.
 
@@ -49,7 +51,7 @@ These exploratory activities helped identify areas where the original processing
 
 ---
 
-## 5.3 Original Solution Assessment
+## 1.3 Original Solution Assessment
 
 The original implementation relied heavily on SAS Compute Server processing.
 
@@ -73,7 +75,7 @@ Although functionally correct, the design did not fully leverage Oracle processi
 
 ---
 
-## 5.4 Optimization Goals
+## 1.4 Optimization Goals
 
 The optimization effort focused on the following objectives:
 
@@ -97,7 +99,7 @@ All optimization activities were required to maintain functional equivalence wit
 
 ---
 
-## 5.5 Configuration and Parameterization
+## 1.5 Configuration and Parameterization
 
 A dedicated parameter file was introduced to centralize configuration.
 
@@ -125,7 +127,7 @@ Benefits:
 
 ---
 
-## 5.6 Authentication Design
+## 1.6 Authentication Design
 
 Oracle authentication was implemented using a SAS Authentication Domain.
 
@@ -146,7 +148,7 @@ Although not required by the case study, this design more closely represents pro
 
 ---
 
-## 5.7 Oracle Pushdown Strategy
+## 1.7 Oracle Pushdown Strategy
 
 A primary optimization objective was maximizing Oracle-side execution.
 
@@ -175,7 +177,7 @@ Explicit pass-through was selected for the most computationally intensive operat
 
 ---
 
-## 5.8 Pushdown Validation
+## 1.8 Pushdown Validation
 
 Oracle pushdown behavior was validated using tracing options.
 
@@ -198,7 +200,7 @@ Validation activities ensured that critical transformations remained within Orac
 
 ---
 
-## 5.9 GDP Processing Redesign
+## 1.9 GDP Processing Redesign
 
 GDP processing represented one of the largest redesign efforts.
 
@@ -245,7 +247,7 @@ Benefits:
 
 ---
 
-## 5.10 Common Table Expressions (CTEs)
+## 1.10 Common Table Expressions (CTEs)
 
 The optimized implementation was designed around multiple Common Table Expressions.
 
@@ -270,7 +272,7 @@ The final SQL implementation closely follows the intended ETL pipeline while rem
 
 ---
 
-## 5.11 Oracle Analytic Functions
+## 1.11 Oracle Analytic Functions
 
 Several Oracle analytic functions were introduced to replace SAS-side calculations.
 
@@ -306,7 +308,7 @@ Benefits:
 
 ---
 
-## 5.12 COUNTRY_LOOKUP Construction
+## 1.12 COUNTRY_LOOKUP Construction
 
 The original implementation generated COUNTRY_LOOKUP through multiple SAS processing stages:
 
@@ -329,7 +331,7 @@ Benefits:
 
 ---
 
-## 5.13 Validation Strategy
+## 1.13 Validation Strategy
 
 Output validation was considered mandatory to ensure functional equivalence.
 
@@ -372,7 +374,7 @@ The optimized implementation produced equivalent business results.
 
 ---
 
-## 5.14 Benchmark Framework Design
+## 1.14 Benchmark Framework Design
 
 A custom benchmarking framework was developed for this project.
 
@@ -395,7 +397,7 @@ This approach ensures repeatable and consistent benchmark execution.
 
 ---
 
-## 5.15 Performance Measurement Methodology
+## 1.15 Performance Measurement Methodology
 
 The case study required performance comparison using Block I/O metrics.
 
@@ -444,7 +446,7 @@ Results are automatically consolidated into a final benchmark report.
 
 ---
 
-## 5.17 Design Outcomes
+## 1.17 Design Outcomes
 
 The final solution significantly reduced SAS-side processing by moving the majority of transformations into Oracle.
 
@@ -464,7 +466,7 @@ The resulting architecture is simpler, more maintainable, and more scalable whil
 
 ---
 
-## 5.18 Lessons Learned
+## 1.18 Lessons Learned
 
 Key lessons learned during this project include:
 
