@@ -131,7 +131,7 @@ The research project focused on investigating and presenting the following topic
 
 - SAS Studio Custom Steps
 
-Created a simple example of a SAS Studio Custom Step and added to the ``research_topic`` directory
+Created a simple example of a SAS Studio Custom Step and added it to the ``research_topic`` directory
 
 ---
 
