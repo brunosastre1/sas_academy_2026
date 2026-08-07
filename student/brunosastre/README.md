@@ -142,7 +142,6 @@ student/
     ├── natdis_project
     │   ├── main_tester.sas
     │   └── natdis_project_flow.flw
-    ├── presentation
     └── research_topic
 ```
 
