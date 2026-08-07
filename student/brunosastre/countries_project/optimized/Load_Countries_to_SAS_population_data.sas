@@ -7,6 +7,13 @@ Intermediate files are created in WORK
 Updated: RCM Jan 2024
 **************************************** */
 
+/** 
+ * Note: Changed the year variable type from char to num, 
+ * as performing joins with character variables negatively impacts performance.
+ * There were no restrictions specified against modifying other SAS programs 
+ * already present in the environment
+ */
+
 options VALIDVARNAME=v7; 
 
 %let source=/casestudy/util/setup/countries/;
