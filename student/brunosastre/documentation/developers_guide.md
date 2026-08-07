@@ -1082,11 +1082,24 @@ https://go.documentation.sas.com/doc/en/pgmsascdc/v_077/casfedsql/titlepage.htm
 ###Procedures Listed Alphabetically
 https://go.documentation.sas.com/doc/en/pgmsascdc/v_077/procs2actions/p0275qj00ns5pen16ijvuz8f8j5k.htm#n1g8vzsk4tarxjn1r237lf6owbwi
 
+###SAS Procedures by Name
+https://go.documentation.sas.com/doc/en/pgmsascdc/v_077/allprodsproc/procedures.htm
+
+### PROC PRINT
+https://documentation.sas.com/doc/en/pgmsascdc/v_077/proc/p1dlh3svb4rrasn14h8jm6nyrj5o.htm=
+
+###Defining and Calling Macros
+https://documentation.sas.com/doc/en/vdmmlcdc/8.1/mcrolref/p1gjh9paxeeq2hn17l8f0irr6d8i.htm
+
 ###CASUTIL Procedure
 https://go.documentation.sas.com/doc/en/pgmsascdc/v_077/casref/p1momv516ndlt7n1vhgva4urpuk6.htm
 
 ###Programming with the SQL Procedure
 https://go.documentation.sas.com/doc/en/pgmsascdc/v_073/sqlproc/titlepage.htm
+
+###SAS® Output Delivery System: User’s Guide
+https://documentation.sas.com/doc/en/pgmsascdc/v_073/odsug/titlepage.htm
+https://support.sas.com/rnd/base/ods/
 
 ###SAS/ACCESS Interface to Oracle
 https://go.documentation.sas.com/doc/en/pgmsascdc/v_061/acreldb/p1ujrhdoe1p743n12awcf7mwyg81.htm
@@ -1109,4 +1122,6 @@ https://go.documentation.sas.com/doc/en/dqcdc/v_051/dqclref/n0qpz9st6bzbexn1p7cf
 ###DQSTANDARDIZE Function
 https://go.documentation.sas.com/doc/en/dqcdc/v_051/dqclref/p0k705exnmtpgin1xppkpx5f7r30.htm
 
+###SAS Studio DevOps: Collaborative Development of SAS Studio Flows and Programs Using Git Integration
+https://communities.sas.com/t5/SAS-Communities-Library/SAS-Studio-DevOps-Collaborative-Development-of-SAS-Studio-Flows/ta-p/920744
 
